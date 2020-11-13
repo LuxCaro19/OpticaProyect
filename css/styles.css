@@ -6,16 +6,28 @@ body{
 
 }
 
-.login{
+.input-field input:focus + label {
+    color: rgba(68, 176, 209, 0.904) !important;
+}
+  /* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid rgba(68, 176, 209, 0.904) !important;
+    box-shadow: 0 1px 0 0 rgba(68, 176, 209, 0.904) !important;
+}
 
-    margin-top: 100px;
+
+
+
+.login{  
+    
+    margin-top: 35px;
 
 }
 
 
  .login .card{
 
-    background: rgba(29, 29, 29, 0.726);
+    background: rgba(53, 53, 53, 0.664);
     border-radius: 10px;
 
 }
@@ -23,7 +35,7 @@ body{
 .login label{
 
     font-size: 16px;
-    color: rgb(179, 179, 179);
+    color: rgb(218, 218, 218);
 
 }
 
@@ -35,12 +47,23 @@ body{
 .login input{
 
     font-size: 20px !important;
-    color:rgb(179, 179, 179); 
+    color:rgb(218, 218, 218);
+    font-family: 'Architects Daughter', cursive;
 }
 
 .login button:hover{
 
     padding: 0px 50px;
+    background: rgba(68, 176, 209, 0.904);
+
+}
+
+.error .card{
+
+    background: rgba(199, 199, 199, 0.664);
+    border-radius: 10px;
+    margin-top: 70px;
+    padding: 30px;
 
 }
 
@@ -66,7 +89,13 @@ body{
 .card-content h4{
 
     margin-bottom: 50px;
-    color: rgb(207, 204, 204);
+    color: rgb(218, 218, 218);
+
+}
+
+.card-content img{
+
+    width: 190px;
 
 }
 
@@ -100,3 +129,11 @@ button{
 
 }
 
+.nav-wrapper img{
+
+    width: 110px;
+    margin-top: 8px;
+    margin-left: 140px;
+   
+    
+}
