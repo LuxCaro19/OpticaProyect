@@ -6,16 +6,16 @@ require_once("Conexion.php");
 
 class Usuario{
 
-    public function login($nombre, $clave){
+    public function login($rut, $clave){
 
-        $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE nombre=:nombre AND clave=:clave");
-        $stm->bindParam(":nombre",$nombre);
+        $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE rut=:rut AND clave=:clave AND estado='1'");
+        $stm->bindParam(":rut",$rut);
         $stm->bindParam(":clave",$clave);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-
+    //borrar este comentario
 
 }
  
