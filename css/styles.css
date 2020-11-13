@@ -1,11 +1,102 @@
-.ancho-100 {
-    width: 100%;
+body{
+
+    background: url('../img/background.jpg');
+    background-size: cover;
+    font-family: 'Architects Daughter', cursive;
 
 }
+
+.login{
+
+    margin-top: 100px;
+
+}
+
+
+ .login .card{
+
+    background: rgba(29, 29, 29, 0.726);
+    border-radius: 10px;
+
+}
+
+.login label{
+
+    font-size: 16px;
+    color: rgb(179, 179, 179);
+
+}
+
+.card-action{
+
+    border-radius: 10px;
+}
+
+.login input{
+
+    font-size: 20px !important;
+    color:rgb(179, 179, 179); 
+}
+
+.login button:hover{
+
+    padding: 0px 50px;
+
+}
+
+
 
 .btn{
 
     margin-top: 40px;
-    box-shadow: 3px 7px 3px 0px gray;
+    background-color: royalblue;
+    
 
 }
+
+
+
+
+.card-action img{
+
+    width: 250px;
+
+}
+
+.card-content h4{
+
+    margin-bottom: 50px;
+    color: rgb(207, 204, 204);
+
+}
+
+
+
+.card-errors{
+
+    display: grid;
+    grid-template-columns: 1fr;
+    background: rgba(17, 16, 16, 0.425);
+
+    align-items: center;
+    
+    border-radius: 10px;
+
+}
+
+.btn-large{
+
+    margin-top: 30px;
+
+    border-radius: 6px;
+    background: rgba(73, 140, 161, 0.863);
+    
+
+}
+
+button{
+
+    font-family: 'Architects Daughter', cursive;
+
+}
+
