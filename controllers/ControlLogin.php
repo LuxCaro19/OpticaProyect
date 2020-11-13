@@ -15,7 +15,7 @@ class ControlLogin{
 
     public function __construct()
     {
-        $this->rut    = $_POST['nombreUsuario'];
+        $this->rut    = $_POST['rutUsuario'];
         $this->clave  = $_POST['claveUsuario'];
     }
 
@@ -35,22 +35,22 @@ class ControlLogin{
         }
 
         
-        //hernamo a ver si se sube esta weaaa
         //este codigo valida si el usuario es administrador, vendedor u otro y redirecciona respectivamente
         foreach($array as $a)
         {
             switch ($a["rol"]) {
                 case "administrador":
                     //aqui hay que colocar el modulo administrador
-                    echo "soy admin";
-                    break;
-                case "vendedor":
                     $_SESSION['user'] = $array[0];
                     header("Location: ../view/crearCliente.php");
                     break;
+                case "vendedor":
+                    echo "soy un vendedor kawai";
+                    break;
                 default:
                     //no se que podria ir aqui, quizas un  error o algo
-                    echo "no eres nada";
+                    $_SESSION ['error'] = "Usuario no encontrado.";
+                    header("Location: ../index.php");
                     break;
             } 
         }
