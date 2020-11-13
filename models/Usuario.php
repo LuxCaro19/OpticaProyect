@@ -15,7 +15,7 @@ class Usuario{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-
+    //borrar este comentario
 
 }
  
