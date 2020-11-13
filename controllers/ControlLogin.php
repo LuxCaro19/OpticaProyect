@@ -35,7 +35,7 @@ class ControlLogin{
         }
 
         
-
+        //hernamo a ver si se sube esta weaaa
         //este codigo valida si el usuario es administrador, vendedor u otro y redirecciona respectivamente
         foreach($array as $a)
         {
