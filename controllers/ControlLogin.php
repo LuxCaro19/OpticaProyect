@@ -12,7 +12,7 @@ class ControlLogin{
 
     public function __construct()
     {
-        $this->rut    = $_POST['nombreUsuario'];
+        $this->rut    = $_POST['rutUsuario'];
         $this->clave  = $_POST['claveUsuario'];
     }
 
@@ -47,7 +47,8 @@ class ControlLogin{
                     break;
                 default:
                     //no se que podria ir aqui, quizas un  error o algo
-                    echo "no eres nada";
+                    $_SESSION ['error'] = "Usuario no encontrado.";
+                    header("Location: ../index.php");
                     break;
             } 
         
