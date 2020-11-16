@@ -15,7 +15,7 @@ $usuarios = $modelo->cargarUsuarios();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestion de Usuarios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -43,70 +43,131 @@ $usuarios = $modelo->cargarUsuarios();
 
     
             <div class="container">
-                <div class="row">
+                <div class="row login">
                     <div class="col l4 m6 s12">
-                        <?php if (isset($_SESSION['editar'])) { ?>
 
-                        <!-------------- Editar Usuario---------------->
-                            <form action="../controllers/controlEditarUsuario.php" method="POST">
-                                <h3>Editar Usuario</h3>
-                                <input type="hidden" name="originalRut"value="<?= $_SESSION['usuario']['rut']?>">
-                                <input type="text" name="editarRut" placeholder="rut"       value="<?= $_SESSION['usuario']['rut']?>">
-                                <input type="text" name="editarNombre" placeholder="nombre" value="<?= $_SESSION['usuario']['nombre']?>">
-                                <input type="password" name="editarClave" placeholder="clave"   value="<?= $_SESSION['usuario']['clave']?>"> 
-                                    <select name="editarEstado" class="browser-default">
-                                        <option value="" disabled>Bloqueo de cuenta</option>
-                                        <option value="1" 
-                                        <?php if ($_SESSION['usuario']['estado']==1) {
+                        <div class="card">
+
+
+                            <div class="card-content">
+                            
+
+
+                            
+                                <?php if (isset($_SESSION['editar'])) { ?>
+
+                                <!-------------- Editar Usuario---------------->
+                                    <form action="../controllers/controlEditarUsuario.php" method="POST">
+                                        <h4 class="center">Editar Usuario</h4>
+
+                                        <div class="input-field">
+                                            <input type="hidden" name="originalRut"value="<?= $_SESSION['usuario']['rut']?>">
                                             
-                                            echo "selected";
+                                        </div>
+
+                                        <div class="input-field">
+                                            <input type="text" name="editarRut"       value="<?= $_SESSION['usuario']['rut']?>">
+                                            <label for="rut">Rut</label>
+
+                                        </div>
+
+                                        <div class="input-field">
+                                        
+                                            <input type="text" name="editarNombre" value="<?= $_SESSION['usuario']['nombre']?>">
+                                            <label for="nombre">Nombre</label>
+                                        </div> 
+
+                                        <div class="input-field">
+                                            <input type="password" name="editarClave"   value="<?= $_SESSION['usuario']['clave']?>"> 
+                                            <label for="clave">Contraseña</label>
+                                        </div>
+
+                                            <div class="input-field">
+
+                                                <select name="editarEstado" class="browser-default">
+                                                    <option value="" disabled>Bloqueo de cuenta</option>
+                                                    <option value="1" 
+                                                    <?php if ($_SESSION['usuario']['estado']==1) {
+                                                        
+                                                        echo "selected";
+                                                        
+                                                        }?>
+                                                        >HABILITADO</option>
+                                                    <option value="0"  <?php if ($_SESSION['usuario']['estado']==0) {
+                                                        
+                                                        echo "selected";
+                                                        
+                                                        }?>
+                                                        >BLOQUEADO</option>
+                                                </select> 
+
+                                            </div>
+
+                                            <div class="input-field center-align">
                                             
-                                            }?>
-                                            >HABILITADO</option>
-                                        <option value="0"  <?php if ($_SESSION['usuario']['estado']==0) {
-                                            
-                                            echo "selected";
-                                            
-                                            }?>
-                                            >BLOQUEADO</option>
-                                    </select> <br>
+                                                <button name="editarUsuario" class="btn-large">GUARDAR</button>
+                                            </div>
+                                    </form>
 
                                     
-                                <button name="editarUsuario" class="btn">GUARDAR</button>
-                            </form>
 
-                        <?php } else {?>
-                        <!-------------- Nuevo Usuario---------------->
-                            <form action="../controllers/controlCrearUsuario.php" method="POST">
-                                <h3>Crear Usuario</h3>
-                                <input type="text" name="crearRut" placeholder="rut">
-                                <input type="text" name="crearNombre" placeholder="nombre">
-                                <input type="password" name="crearClave" placeholder="clave">
+                                <?php } else {?>
+                                <!-------------- Nuevo Usuario---------------->
+                                    <form action="../controllers/controlCrearUsuario.php" method="POST">
+                                        <h4 class="center">Crear Usuario</h4>
+                                        <div class="input-field">
+
+                                            <input type="text" name="crearRut">
+                                            <label for="rut">Rut</label>
+
+                                        </div>
+
+                                        <div class="input-field">
+
+                                            <input type="text" name="crearNombre">
+                                            <label for="nombre">Nombre</label>
+                                            
+                                        </div>
+
+                                        <div class="input-field">
+                                            <input type="password" name="crearClave">
+                                            <label for="clave">Clave</label>
+                                        </div>
+                                        
+                                        <div class="input-field center-align">
+
+                                            <button name="crearUsuario" class="btn-large">CREAR</button>
+
+                                        </div>
+                                        
+                                        
+                                    </form>
                                 
-                                <button name="crearUsuario" class="btn">CREAR</button>
-                            </form>
-                        
-                        <?php } unset($_SESSION['editar']);?>
-                        <p>
-                            <?php 
-                                if (isset($_SESSION['respuesta'])) {
-                                    echo $_SESSION['respuesta'];
-                                    unset ($_SESSION['respuesta']);
-                                }
-                            ?>
+                                <?php } unset($_SESSION['editar']);?>
+                                <p>
+                                    <?php 
+                                        if (isset($_SESSION['respuesta'])) {
+                                            echo $_SESSION['respuesta'];
+                                            unset ($_SESSION['respuesta']);
+                                        }
+                                    ?>
 
-                        </p>
-                        
+                                </p>
+
+                            </div>
+                            
+
+                        </div>
 
 
 
                     </div>
 
 
-                    <div class="col maginTop-130 l7 m6 s12">
+                    <div class="col l7 m6 s12">
                         <!-------------- Tabla de usuarios ---------------->
                         <form action="../controllers/ControlTablaU.php" method="post">
-                            <table>
+                            <table class="striped">
                                 
                                 <tr>
                                     <th>RUT</th>
@@ -130,7 +191,15 @@ $usuarios = $modelo->cargarUsuarios();
                                     <td class="<?= $colorsito ?>"> <?= $usr["rut"]  ?> </td>
                                     <td class="<?= $colorsito ?>"> <?= $usr["nombre"]  ?> </td>
                                     <td class="<?= $colorsito ?>"> <?= $est  ?> </td>
-                                    <td> <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn">✎</button> </td>
+                                    <td> 
+                                        <div class="input-field center-align">
+
+                                            <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn">✎</button> 
+
+                                        </div>
+
+                                    </td>
+                                    
                                 </tr>
                                 <?php } ?>
 
@@ -180,5 +249,6 @@ $usuarios = $modelo->cargarUsuarios();
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
 </body>
 </html>
