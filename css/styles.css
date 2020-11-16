@@ -80,6 +80,7 @@ body{
 
 
 
+
 .card-action img{
 
     width: 250px;
@@ -136,4 +137,10 @@ button{
     margin-left: 140px;
    
     
+}
+
+.maginTop-130 {
+
+    margin-top: 130px;
+
 }

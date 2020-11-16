@@ -70,8 +70,8 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="nombreUsuario" id="nombre">
-                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="rutUsuario" id="nombre">
+                                    <label for="nombre">rut</label>
                                     
                                 </div>
 
