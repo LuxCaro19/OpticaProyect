@@ -8,10 +8,7 @@ require_once("../models/Usuario.php");
 
 class ControlLogin{
     public $rut;
-    public $nombre;
-    public $rol;
     public $clave;
-    public $estado;
 
     public function __construct()
     {
@@ -36,16 +33,17 @@ class ControlLogin{
 
         
         //este codigo valida si el usuario es administrador, vendedor u otro y redirecciona respectivamente
-        foreach($array as $a)
-        {
+
+        $a = $array[0];
+        
             switch ($a["rol"]) {
                 case "administrador":
-                    //aqui hay que colocar el modulo administrador
-                    $_SESSION['user'] = $array[0];
-                    header("Location: ../view/crearCliente.php");
+                    $_SESSION['user'] = $a;
+                    header("Location: ../view/gestionUsuario.php");
                     break;
                 case "vendedor":
-                    echo "soy un vendedor kawai";
+                    $_SESSION['user'] = $a;
+                    header("Location: ../view/crearCliente.php");
                     break;
                 default:
                     //no se que podria ir aqui, quizas un  error o algo
@@ -53,7 +51,7 @@ class ControlLogin{
                     header("Location: ../index.php");
                     break;
             } 
-        }
+        
         
     }
 
