@@ -102,11 +102,6 @@ $usuarios = $modelo->cargarUsuarios();
 
                     </div>
 
-                    <div class="prob">
-
-                        <h2>CONCHETUMARE</h2>
-
-                    </div>
 
                     <div class="col maginTop-130 l7 m6 s12">
                         <!-------------- Tabla de usuarios ---------------->
