@@ -20,6 +20,7 @@ $usuarios = $modelo->cargarUsuarios();
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -33,13 +34,34 @@ $usuarios = $modelo->cargarUsuarios();
 
                 <img src="../img/logoOptica.png" alt="">
 
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="gestionUsuario.php">Gestion de usuarios</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
+                    
+
+
                 </ul>
             </div>
+
+            
+
         </nav>
+
+         <!--nav movil-->
+
+        
+        <ul id="slide-out" class="sidenav">
+            <li class="active"><a href="gestionUsuario.php" class="white-text">Gestion de usuarios</a></li>
+            <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
+        </ul>
+        
+
+        <!--fin nav-->
+
+       
 
     
             <div class="container">
@@ -57,7 +79,7 @@ $usuarios = $modelo->cargarUsuarios();
                                 <?php if (isset($_SESSION['editar'])) { ?>
 
                                 <!-------------- Editar Usuario---------------->
-                                    <form action="../controllers/controlEditarUsuario.php" method="POST">
+                                    <form action="../controllers/ControlEditarUsuario.php" method="POST">
                                         <h4 class="center">Editar Usuario</h4>
 
                                         <div class="input-field">
@@ -113,7 +135,7 @@ $usuarios = $modelo->cargarUsuarios();
 
                                 <?php } else {?>
                                 <!-------------- Nuevo Usuario---------------->
-                                    <form action="../controllers/controlCrearUsuario.php" method="POST">
+                                    <form action="../controllers/ControlCrearUsuario.php" method="POST">
                                         <h4 class="center">Crear Usuario</h4>
 
                                         <div class="card-errors">
@@ -254,6 +276,8 @@ $usuarios = $modelo->cargarUsuarios();
                                 <h2 class="red-text">Te has equivocado de camino amigo</h2>
                                 <h4 class="black-text">no dispones de accesso para estar aquí</h4>
                                 <p>Debes iniciar sesión, vuelve al <a href="../index.php">home</a> e inicia sesión.</p>
+                                <p>Creadores de la pagina: <a href="../creadores.html">creadores</a></p>
+
 
                             </div>
 
@@ -279,6 +303,11 @@ $usuarios = $modelo->cargarUsuarios();
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
         });
 
 
