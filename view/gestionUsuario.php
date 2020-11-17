@@ -194,7 +194,7 @@ $usuarios = $modelo->cargarUsuarios();
                                     <td> 
                                         <div class="input-field center-align">
 
-                                            <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn">✎</button> 
+                                            <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn-floating">✎</button> 
 
                                         </div>
 
