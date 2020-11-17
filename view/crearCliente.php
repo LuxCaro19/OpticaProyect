@@ -120,7 +120,7 @@
 
                                     <div class="input-field center-align">
 
-                                        <button class="btn-large">Iniciar Sesión</button>
+                                        <button class="btn-large">Crear</button>
 
                                     </div>
 

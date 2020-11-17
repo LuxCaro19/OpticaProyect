@@ -7,12 +7,12 @@ body{
 }
 
 .input-field input:focus + label {
-    color: rgba(68, 176, 209, 0.904) !important;
+    color: rgb(57, 209, 255) !important;
 }
   /* label underline focus color */
 .input-field input:focus {
-    border-bottom: 1px solid rgba(68, 176, 209, 0.904) !important;
-    box-shadow: 0 1px 0 0 rgba(68, 176, 209, 0.904) !important;
+    border-bottom: 1px solid rgb(57, 209, 255) !important;
+    box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
 }
 
 
