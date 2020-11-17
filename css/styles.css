@@ -7,12 +7,12 @@ body{
 }
 
 .input-field input:focus + label {
-    color: rgba(68, 176, 209, 0.904) !important;
+    color: rgb(57, 209, 255) !important;
 }
   /* label underline focus color */
 .input-field input:focus {
-    border-bottom: 1px solid rgba(68, 176, 209, 0.904) !important;
-    box-shadow: 0 1px 0 0 rgba(68, 176, 209, 0.904) !important;
+    border-bottom: 1px solid rgb(57, 209, 255) !important;
+    box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
 }
 
 
@@ -27,7 +27,7 @@ body{
 
  .login .card{
 
-    background: rgba(71, 71, 71, 0.664);
+    background: rgba(68, 68, 68, 0.664);
     border-radius: 10px;
 
 }
@@ -53,7 +53,6 @@ body{
 
 .login button:hover{
 
-    padding: 0px 30px;
     background: rgba(68, 176, 209, 0.904);
 
 }
@@ -113,6 +112,7 @@ body{
 
 }
 
+
 .btn-large{
 
     margin-top: 30px;
@@ -120,6 +120,12 @@ body{
     border-radius: 6px;
     background: rgba(73, 140, 161, 0.863);
     
+
+}
+
+.btn-floating{
+
+    background: rgba(73, 140, 161, 0.863);
 
 }
 
@@ -137,5 +143,13 @@ button{
    
     
 }
+
+.card-panel{
+
+    border-radius: 10px;
+    background: rgba(182, 182, 182, 0.651);
+
+}
+
 
 

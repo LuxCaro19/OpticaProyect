@@ -35,7 +35,7 @@ $usuarios = $modelo->cargarUsuarios();
 
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="gestionUsuario.php">Gestion de usuarios</a></li>
+                    <li class="active"><a href="gestionUsuario.php">Gestion de usuarios</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
@@ -84,7 +84,7 @@ $usuarios = $modelo->cargarUsuarios();
 
                                             <div class="input-field">
 
-                                                <select name="editarEstado" class="browser-default">
+                                                <select name="editarEstado">
                                                     <option value="" disabled>Bloqueo de cuenta</option>
                                                     <option value="1" 
                                                     <?php if ($_SESSION['usuario']['estado']==1) {
@@ -115,6 +115,33 @@ $usuarios = $modelo->cargarUsuarios();
                                 <!-------------- Nuevo Usuario---------------->
                                     <form action="../controllers/controlCrearUsuario.php" method="POST">
                                         <h4 class="center">Crear Usuario</h4>
+
+                                        <div class="card-errors">
+
+                               
+                                            <p class="green-text center">
+                                                <?php 
+                                                    if (isset($_SESSION['respuesta'])) {
+                                                        echo $_SESSION['respuesta'];
+                                                        unset ($_SESSION['respuesta']);
+                                                    }
+                                                ?>
+
+                                            </p>
+
+                                            <p class="red-text center">
+                                                <?php
+                                                    if (isset($_SESSION['error'])) {
+                                                        echo $_SESSION['error'];
+                                                        unset($_SESSION['error']);
+                                                    }
+                                                ?>
+                                            </p>
+
+
+                                        </div>
+
+
                                         <div class="input-field">
 
                                             <input type="text" name="crearRut">
@@ -144,15 +171,8 @@ $usuarios = $modelo->cargarUsuarios();
                                     </form>
                                 
                                 <?php } unset($_SESSION['editar']);?>
-                                <p>
-                                    <?php 
-                                        if (isset($_SESSION['respuesta'])) {
-                                            echo $_SESSION['respuesta'];
-                                            unset ($_SESSION['respuesta']);
-                                        }
-                                    ?>
 
-                                </p>
+                               
 
                             </div>
                             
@@ -166,47 +186,52 @@ $usuarios = $modelo->cargarUsuarios();
 
                     <div class="col l7 m6 s12">
                         <!-------------- Tabla de usuarios ---------------->
-                        <form action="../controllers/ControlTablaU.php" method="post">
-                            <table class="striped">
-                                
-                                <tr>
-                                    <th>RUT</th>
-                                    <th>NOMBRE</th>
-                                    <th>ESTADO</th>
-                                    <th>ACCIONES</th>
-                                </tr>
-                                <?php foreach ($usuarios as $usr) { ?>
-                                <tr>
-                                    <?php if ($usr["estado"]==1) {
-                                        //colorsito sera rojo si el usuario esta bloqueado
-                                        //ademas en vez de mostrar estado 0 o 1 mostrara un texto
-                                        $est ="HABILITADO";
-                                        $colorsito = "black-text";
-                                    } else {
-                                        $est = "BLOQUEADO";
-                                        $colorsito = "red-text";
-                                    } ?>
 
-
-                                    <td class="<?= $colorsito ?>"> <?= $usr["rut"]  ?> </td>
-                                    <td class="<?= $colorsito ?>"> <?= $usr["nombre"]  ?> </td>
-                                    <td class="<?= $colorsito ?>"> <?= $est  ?> </td>
-                                    <td> 
-                                        <div class="input-field center-align">
-
-                                            <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn">✎</button> 
-
-                                        </div>
-
-                                    </td>
+                        <div class="card-panel">
+                            <form action="../controllers/ControlTablaU.php" method="post">
+                                <table class="striped centered">
                                     
-                                </tr>
-                                <?php } ?>
+                                    <thead>
+                                        <tr>
+                                            <th>RUT</th>
+                                            <th>NOMBRE</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIONES</th>
+                                        </tr>
+                                    </thead>
+                                    <?php foreach ($usuarios as $usr) { ?>
+                                    <tr>
+                                        <?php if ($usr["estado"]==1) {
+                                            //colorsito sera rojo si el usuario esta bloqueado
+                                            //ademas en vez de mostrar estado 0 o 1 mostrara un texto
+                                            $est ="HABILITADO";
+                                            $colorsito = "black-text";
+                                        } else {
+                                            $est = "BLOQUEADO";
+                                            $colorsito = "red-text";
+                                        } ?>
+
+
+                                        <td class="<?= $colorsito ?>"> <?= $usr["rut"]  ?> </td>
+                                        <td class="<?= $colorsito ?>"> <?= $usr["nombre"]  ?> </td>
+                                        <td class="<?= $colorsito ?>"> <?= $est  ?> </td>
+                                        <td> 
+                                            <div class="input-field center-align">
+
+                                                <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn-floating">✎</button> 
+
+                                            </div>
+
+                                        </td>
+                                        
+                                    </tr>
+                                    <?php } ?>
 
 
 
-                            </table>
-                        </form>
+                                </table>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -249,6 +274,15 @@ $usuarios = $modelo->cargarUsuarios();
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+
+
+    </script>
   
 </body>
 </html>

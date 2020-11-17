@@ -26,7 +26,7 @@
         
             
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="crearCliente.php">Crear Cliente</a></li>
+                    <li class="active"><a href="crearCliente.php">Crear Cliente</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
@@ -120,7 +120,7 @@
 
                                     <div class="input-field center-align">
 
-                                        <button class="btn-large">Iniciar Sesión</button>
+                                        <button class="btn-large">Crear</button>
 
                                     </div>
 
