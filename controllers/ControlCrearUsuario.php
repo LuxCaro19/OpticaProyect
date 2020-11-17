@@ -29,7 +29,7 @@ class ControlUsuario{
     public function nuevoUsuario(){
         session_start();
         if ($this->rut == "" || $this->nombre == "" || $this->clave == "") {
-            $_SESSION['respuesta'] = "campos vacios";
+            $_SESSION['error'] = "Existen campos vacios en el formulario, por favor llene el formulario e intente nuevamente";
             header("Location: ../view/gestionUsuario.php");
             return;
         }
@@ -41,12 +41,12 @@ class ControlUsuario{
         $ishere = $model->BuscarUsuario($this->rut);
         $count = $model->CrearUsuairo($data);
         if ($count == 1) {
-            $_SESSION['respuesta'] = "usuario creado";
+            $_SESSION['respuesta'] = "Usuario creado exitosamente";
         } else {
             if (count($ishere)== 1) {
-                $_SESSION['respuesta'] = "rut ya existe";
+                $_SESSION['error'] = "El Rut ya existe en la base de datos";
             } else {
-                $_SESSION['respuesta'] = "error database";
+                $_SESSION['error'] = "Error a nivel de base de datos";
             }
         }
 

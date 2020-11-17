@@ -12,7 +12,7 @@ class Usuario{
 
         $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE rut=:rut AND clave=:clave AND estado='1'");
         $stm->bindParam(":rut",$rut);
-        $stm->bindParam(":clave",$clave);
+        $stm->bindParam(":clave",md5($clave));
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
@@ -21,7 +21,7 @@ class Usuario{
         $stm = Conexion::conector()->prepare("INSERT INTO usuario VALUES(:rut,:nombre,'vendedor',:clave,'1')");
         $stm->bindParam(":rut",$data['rut']);
         $stm->bindParam(":nombre",$data['nombre']);
-        $stm->bindParam(":clave",$data['clave']);
+        $stm->bindParam(":clave",md5($data['clave']));
         return $stm->execute();
     }
 

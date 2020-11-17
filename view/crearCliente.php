@@ -26,7 +26,7 @@
         
             
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="crearCliente.php">Crear Cliente</a></li>
+                    <li class="active"><a href="crearCliente.php">Crear Cliente</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
                 </ul>
             </div>
