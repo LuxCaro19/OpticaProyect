@@ -57,7 +57,7 @@ $usuarios = $modelo->cargarUsuarios();
                                 <?php if (isset($_SESSION['editar'])) { ?>
 
                                 <!-------------- Editar Usuario---------------->
-                                    <form action="../controllers/controlEditarUsuario.php" method="POST">
+                                    <form action="../controllers/ControlEditarUsuario.php" method="POST">
                                         <h4 class="center">Editar Usuario</h4>
 
                                         <div class="input-field">
@@ -113,7 +113,7 @@ $usuarios = $modelo->cargarUsuarios();
 
                                 <?php } else {?>
                                 <!-------------- Nuevo Usuario---------------->
-                                    <form action="../controllers/controlCrearUsuario.php" method="POST">
+                                    <form action="../controllers/ControlCrearUsuario.php" method="POST">
                                         <h4 class="center">Crear Usuario</h4>
 
                                         <div class="card-errors">

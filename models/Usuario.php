@@ -52,7 +52,7 @@ class Usuario{
         $stm->bindParam(":original",$id);
         $stm->bindParam(":rut",$data['rut']);
         $stm->bindParam(":nombre",$data['nombre']);
-        $stm->bindParam(":clave",$data['clave']);
+        $stm->bindParam(":clave",md5($data['clave']));
         $stm->bindParam(":estado",$data['estado']);
         return $stm->execute();
     }
