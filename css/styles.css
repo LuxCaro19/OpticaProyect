@@ -15,6 +15,46 @@ body{
     box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
 }
 
+.letra-oscura input:focus + label {
+    color: rgb(76, 159, 187) !important;
+}
+  /* label underline focus color */
+.letra-oscura input:focus {
+    border-bottom: 1px solid rgb(76, 159, 187) !important;
+    box-shadow: 0 1px 0 0 rgb(76, 159, 187) !important;
+    
+    
+}
+
+.letra-oscura input{
+
+    font-size: 20px !important;
+    color:rgb(48, 106, 126);
+    border-bottom: 1px solid rgb(48, 106, 126) !important;
+
+    font-family: 'Architects Daughter', cursive;
+
+}
+
+.letra-oscura label{
+
+    font-size: 16px;
+    color: rgb(48, 106, 126);
+
+}
+
+.letra-oscura button:hover{
+
+    background: rgba(68, 176, 209, 0.904);
+
+}
+
+.letra-oscura h6{
+
+    color:rgb(48, 106, 126);
+
+}
+
 
 
 
@@ -157,6 +197,35 @@ button{
     
 
 }
+
+.border{
+
+    border: 1px solid black;
+
+}
+
+.back{
+
+
+    background: rgba(124, 124, 124, 0.616);
+
+}
+
+.collection .collection-item {
+    background-color: rgba(124, 124, 124, 0.616);
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid rgb(48, 106, 126);
+    color: rgb(48, 106, 126);
+}
+
+.collection {
+
+    border: 1px solid rgb(48, 106, 126);
+
+}
+
 
 
 
