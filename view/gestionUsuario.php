@@ -28,9 +28,7 @@ $usuarios = $modelo->cargarUsuarios();
 
     <?php
     if (isset($_SESSION['user'])) { ?>
-
         <nav>
-
             <div class="nav-wrapper grey darken-1">
 
 
@@ -47,154 +45,59 @@ $usuarios = $modelo->cargarUsuarios();
 
                 </ul>
             </div>
-
-
-
         </nav>
 
         <!--nav movil-->
-
-
         <ul id="slide-out" class="sidenav">
             <li class="active"><a href="gestionUsuario.php" class="white-text">Gestion de usuarios</a></li>
             <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
         </ul>
-
-
         <!--fin nav-->
 
-
-
-
-
-        <div class="container">
+        <div class="container" id="gestionusuario">
             <div class="row login">
                 <div class="col l4 m6 s12">
 
                     <div class="card">
 
 
-                        <div class="card-content">
+                        <div class="card-content">             
+                            <h4 v-if="formtype === 'add'" class="center">Crear Usuario</h4>
+                            <h4 v-if="formtype === 'edit'" class="center">Editar Usuario</h4>
+                            <p>{{alerta}}</p> 
 
+                            <div class="input-field"><input type="hidden" :value="orut">
+                            </div>
 
+                            <div class="input-field ">
+                                <input type="text"  v-model="vrut">
+                                <label for="rut">Rut</label>
+                            </div>
+                            
 
+                            <div class="input-field">
+                                <input type="text"  v-model="vnombre">
+                                <label for="nombre">Nombre</label>
+                            </div>
 
-                            <?php if (isset($_SESSION['editar'])) { ?>
+                            <div class="input-field">
+                                <input type="password" v-model="vclave" >
+                                <label for="clave">Contraseña</label>
+                            </div>
 
-                                <!-------------- Editar Usuario---------------->
-                                <form action="../controllers/ControlEditarUsuario.php" method="POST">
-                                    <h4 class="center">Editar Usuario</h4>
-
-                                    <div class="input-field">
-                                        <input type="hidden" name="originalRut" value="<?= $_SESSION['usuario']['rut'] ?>">
-
-                                    </div>
-
-                                    <div class="input-field">
-                                        <input type="text" name="editarRut" value="<?= $_SESSION['usuario']['rut'] ?>">
-                                        <label for="rut">Rut</label>
-
-                                    </div>
-
-                                    <div class="input-field">
-
-                                        <input type="text" name="editarNombre" value="<?= $_SESSION['usuario']['nombre'] ?>">
-                                        <label for="nombre">Nombre</label>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <input type="password" name="editarClave" value="<?= $_SESSION['usuario']['clave'] ?>">
-                                        <label for="clave">Contraseña</label>
-                                    </div>
-
-                                    <div class="input-field">
-
-                                        <select name="editarEstado">
-                                            <option value="" disabled>Bloqueo de cuenta</option>
-                                            <option value="1" <?php if ($_SESSION['usuario']['estado'] == 1) {
-
-                                                                    echo "selected";
-                                                                } ?>>HABILITADO</option>
-                                            <option value="0" <?php if ($_SESSION['usuario']['estado'] == 0) {
-
-                                                                    echo "selected";
-                                                                } ?>>BLOQUEADO</option>
-                                        </select>
-
-                                    </div>
-
-                                    <div class="input-field center-align">
-
-                                        <button name="editarUsuario" class="btn-large">GUARDAR</button>
-                                    </div>
-                                </form>
-
-
-
-                            <?php } else { ?>
-                                <!-------------- Nuevo Usuario---------------->
-                                <form action="../controllers/ControlCrearUsuario.php" method="POST">
-                                    <h4 class="center">Crear Usuario</h4>
-
-                                    <div class="card-errors">
-
-
-                                        <p class="green-text center">
-                                            <?php
-                                            if (isset($_SESSION['respuesta'])) {
-                                                echo $_SESSION['respuesta'];
-                                                unset($_SESSION['respuesta']);
-                                            }
-                                            ?>
-
-                                        </p>
-
-                                        <p class="red-text center">
-                                            <?php
-                                            if (isset($_SESSION['error'])) {
-                                                echo $_SESSION['error'];
-                                                unset($_SESSION['error']);
-                                            }
-                                            ?>
-                                        </p>
-
-
-                                    </div>
-
-
-                                    <div class="input-field">
-
-                                        <input type="text" name="crearRut">
-                                        <label for="rut">Rut</label>
-
-                                    </div>
-
-                                    <div class="input-field">
-
-                                        <input type="text" name="crearNombre">
-                                        <label for="nombre">Nombre</label>
-
-                                    </div>
-
-                                    <div class="input-field">
-                                        <input type="password" name="crearClave">
-                                        <label for="clave">Clave</label>
-                                    </div>
-
-                                    <div class="input-field center-align">
-
-                                        <button name="crearUsuario" class="btn-large">CREAR</button>
-
-                                    </div>
-
-
-                                </form>
-
-                            <?php }
-                            unset($_SESSION['editar']); ?>
-
-
-
+                            <div v-if="formtype === 'edit'" class="input-field" >
+                                <select v-model="vestado"  class="browser-default">
+                                    <option value="" disabled>Bloqueo de cuenta</option>
+                                    <option value="1">HABILITADO</option>
+                                    <option value="0">BLOQUEADO</option>
+                                </select>
+                            </div>
+                            <form action=# >
+                            <div class="input-field center-align">
+                                <button v-on:click="crear()" v-if="formtype === 'add'" class="btn-large">CREAR</button>
+                                <button v-on:click="guardar()" v-if="formtype === 'edit'"class="btn-large">GUARDAR</button>
+                            </div>
+                            </form>
                         </div>
 
 
@@ -209,7 +112,6 @@ $usuarios = $modelo->cargarUsuarios();
                     <!-------------- Tabla de usuarios ---------------->
 
                     <div class="card-panel">
-                        <form action="../controllers/ControlTablaU.php" method="post">
                             <table class="striped centered">
 
                                 <thead>
@@ -220,38 +122,14 @@ $usuarios = $modelo->cargarUsuarios();
                                         <th>ACCIONES</th>
                                     </tr>
                                 </thead>
-                                <?php foreach ($usuarios as $usr) { ?>
-                                    <tr>
-                                        <?php if ($usr["estado"] == 1) {
-                                            //colorsito sera rojo si el usuario esta bloqueado
-                                            //ademas en vez de mostrar estado 0 o 1 mostrara un texto
-                                            $est = "HABILITADO";
-                                            $colorsito = "black-text";
-                                        } else {
-                                            $est = "BLOQUEADO";
-                                            $colorsito = "red-text";
-                                        } ?>
-
-
-                                        <td class="<?= $colorsito ?>"> <?= $usr["rut"]  ?> </td>
-                                        <td class="<?= $colorsito ?>"> <?= $usr["nombre"]  ?> </td>
-                                        <td class="<?= $colorsito ?>"> <?= $est  ?> </td>
-                                        <td>
-                                            <div class="input-field center-align">
-
-                                                <button name="bt_edit" value="<?= $usr["rut"]  ?>" class="btn-floating">✎</button>
-
-                                            </div>
-
-                                        </td>
-
+                                            
+                                    <tr v-for="usuario in usuarios">
+                                        <td :class = usuario.color>{{usuario.rut}}</td>
+                                        <td :class = usuario.color>{{usuario.nombre}}</td>
+                                        <td :class = usuario.color>{{usuario.estado}}</td>
+                                        <td><button  v-on:click="editar(usuario.rut)" class="btn-small btn-floating">✎</button></td>
                                     </tr>
-                                <?php } ?>
-
-
-
                             </table>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -294,9 +172,10 @@ $usuarios = $modelo->cargarUsuarios();
 
 
     <?php } ?>
-
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/gestionUsuario.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');

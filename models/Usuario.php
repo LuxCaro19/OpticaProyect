@@ -16,12 +16,15 @@ class Usuario{
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
-    //crea un usuario, por defecto de rol vendedor y por defecto habilitado con estado 1
+    //crea un usuario
     public function CrearUsuairo($data){
-        $stm = Conexion::conector()->prepare("INSERT INTO usuario VALUES(:rut,:nombre,'vendedor',:clave,'1')");
+        $stm = Conexion::conector()->prepare("INSERT INTO usuario VALUES(:rut,:nombre,:rol,:clave,:estado)");
         $stm->bindParam(":rut",$data['rut']);
         $stm->bindParam(":nombre",$data['nombre']);
-        $stm->bindParam(":clave",md5($data['clave']));
+        $stm->bindParam(":rol",$data['rol']);
+        $stm->bindParam(":clave",$data['clave']);
+        $stm->bindParam(":estado",$data['estado']);
+
         return $stm->execute();
     }
 
@@ -52,7 +55,7 @@ class Usuario{
         $stm->bindParam(":original",$id);
         $stm->bindParam(":rut",$data['rut']);
         $stm->bindParam(":nombre",$data['nombre']);
-        $stm->bindParam(":clave",md5($data['clave']));
+        $stm->bindParam(":clave",$data['clave']);
         $stm->bindParam(":estado",$data['estado']);
         return $stm->execute();
     }

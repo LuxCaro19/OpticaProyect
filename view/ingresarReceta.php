@@ -49,11 +49,11 @@
 
         <div class="card-panel letra-oscura">
 
-            <div class="row">
+            <div class="row" id="buscarcliente">
 
                 <div class="col l4 m6 s12">
 
-                    <form>
+                    <form @submit.prevent="buscar">
 
                         <div class="card">
 
@@ -66,14 +66,14 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="rutCliente" id="rut">
+                                    <input type="text" v-model="rutCliente" id="rut">
                                     <label for="rut">Rut</label>
 
                                 </div>
 
                                 <div class="input-field center-align">
 
-                                    <button name="editarUsuario" class="btn-large">Buscar</button>
+                                    <button class="btn-large">Buscar Cliente</button>
                                 </div>
 
 
@@ -109,10 +109,12 @@
 
 
                             <ul class="collection">
-                                <li class="collection-item">Alvin</li>
-                                <li class="collection-item">Alvin</li>
-                                <li class="collection-item">Alvin</li>
-                                <li class="collection-item">Alvin</li>
+                                <ol>
+                                    <li v-for="(datos, index) of cliente">
+                                    {{ index }}: {{ datos }}
+                                    </li>
+                                </ol>
+                                
                             </ul>
 
                         </div>
@@ -133,40 +135,91 @@
         </div>
 
 
-        <div class="card-panel">
+        <div class="card-panel" id="listaTipos">
 
             <div class="row">
+                <div class="col l3 m6 s15 border">
+                    <p>tipo lente</p>
+                    <label>
+                        <input type="radio" id="lejos" value="lejos" v-model="tipo_lentes">
+                        <span>lejos</span>
+                    </label>
+                    <label>
+                        <input type="radio" id="cerca" value="cerca" v-model="tipo_lentes">
+                        <span>cerca</span>
+                    </label>
+                </div>
 
-                <div class="col l3 m6 s12 border">
 
-                    <p>texto tipo lente</p>
-                    <p>Combobox 1</p>
-                    <p>Combobox 2</p>
+                <div class="col l3 m6 s15 border">
+
+                    <p>tipo cristal</p>
+                    
+                    <select v-model="tipo_sel" class="browser-default">
+                        <option v-for="option in tipos" v-bind:value="option.id_tipo_cristal">
+                            {{ option.tipo_cristal }}
+                        </option>
+                    </select>
+                    <span>Selected: {{ tipo_sel }}</span>
+                    
+                    <p>material de cristal</p>
+
+                    <select v-model="material_sel" class="browser-default">
+                        <option v-for="option in materiales" v-bind:value="option.id_material_cristal">
+                            {{ option.material_cristal }}
+                        </option>
+                    </select>
+                    <span>Selected: {{ material_sel }}</span>
+
+
+
+
 
                 </div>
 
-                <div class="col l3 m6 s12 border">
+                <div class="col l3 m6 s15 border">
 
-                    <p>checkbox tipo lente</p>
-                    <p>Combobox 1</p>
-                    <p>Combobox 2</p>
+                    <p>base</p>
+                    <select v-model="base_sel" class="browser-default">
+                        <option value="" disabled selected hidden></option>
+                        <option value="1">superior</option>
+                        <option value="2">inferior</option>
+                        <option value="3">interna</option>
+                        <option value="4">externa</option>
+                    </select>
+                    <span>Selected: {{ base_sel }}</span>
+
+                    <p>armazon</p>
+
+                    <select v-model="armazon_sel" class="browser-default">
+                        <option v-for="option in armazones" v-bind:value="option.id_armazon">
+                            {{ option.nombre_armazon }}
+                        </option>
+                    </select>
+                    <span>Selected: {{ armazon_sel }}</span>
 
                 </div>
 
-                <div class="col l3 m6 s12 center border">
+                <div class="col l3 m6 s15 center border">
 
-                    <p>Ojo izq</p>
-                    <p>Form 1</p>
-                    <p>Form 2</p>
-
+                    <p>Ojo izquierdo</p>
+                        <p>esfera</p>
+                        <input type="text" v-model ="i_esfera">
+                        <p>cilindro</p>
+                        <input type="text" v-model ="i_cilindro">
+                        <p>eje</p>
+                        <input type="text" v-model ="i_eje">
                 </div>
 
-                <div class="col l3 m6 s12 center border">
+                <div class="col l3 m6 s15 center border">
 
-                    <p>Ojo der</p>
-                    <p>Form 1</p>
-                    <p>Form 2</p>
-
+                    <p>Ojo derecho</p>
+                        <p>esfera</p>
+                        <input type="text" v-model ="d_esfera">
+                        <p>cilindro</p>
+                        <input type="text" v-model ="d_cilindro">
+                        <p>eje</p>
+                        <input type="text" v-model ="d_eje">
                 </div>
 
             </div>
@@ -176,25 +229,38 @@
             <div class="row">
 
                 <div class="col l4 m6 s12 center border">
-
-
-                    <p>Form 1</p>
-                    <p>Form 2</p>
-                    <p>Form 3</p>
+                    <p>Prisma</p>
+                    <input type="text" v-model ="prisma">
+                    <p>Distancia Pupilar</p>
+                    <input type="text" v-model ="distancia_p">
+                    <p>observacion</p>
+                    <div class="input-field col s12">
+                        <textarea v-model = "observacion" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Textarea</label>
+                    </div>
                 </div>
                 <div class="col l4 m6 s12 center border">
 
-                    <p>Form FECHA</p>
-                    <p>Form 2</p>
-                    <p>Form 3</p>
-                    <p>Form 4</p>
-
+                    <p>Fecha entrega</p>
+                    <div class="input-field">
+                        <input type="text" class="datepicker" name="fecha" v-model = "fecha_e">
+                        <label for="fecha">Fecha</label>
+                    </div>
+                    <p>Valor Lente</p>
+                    <input type="text" v-model ="valor">
+                    <p>Distancia Pupilar</p>
+                    <input type="text" v-model ="rut_med">
+                    <p>Prisma</p>
+                    <input type="text" v-model ="nom_med">
                 </div>
 
                 <div class="col l4 m12 s12 center border">
-
-                    <p>Form FECHA</p>
-                    <p>Boton</p>
+                    <p>Fecha Retiro</p>
+                    <div class="input-field">
+                        <input type="text" class="datepicker" name="fecha" v-model = "fecha_e">
+                        <label for="fecha">Fecha</label>
+                        <button v-on:click="crearReceta()" class="btn-large">Crear REceta</button>
+                    </div>
 
                 </div>
 
@@ -214,9 +280,36 @@
 
 
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="../js/buscarOpciones.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../js/buscarCliente.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems, {
 
+                'format': 'yyyy/mm/dd',
+                'i18n': {
+
+                    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    weekday: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                    weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
+
+                }
+
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');

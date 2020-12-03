@@ -37,7 +37,7 @@ class ControlEditarUsuario{
         }
 
         $model = new Usuario();
-        $dataedit = ["rut"=>$this->rut,"nombre"=>$this->nombre,"clave"=>$this->clave,"estado"=>$this->estado];
+        $dataedit = ["rut"=>$this->rut,"nombre"=>$this->nombre,"clave"=>md5($this->clave),"estado"=>$this->estado];
         $id = $this->original;
         
         //no modificar si el rut ya existe
