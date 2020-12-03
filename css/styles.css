@@ -211,6 +211,12 @@ button{
 
 }
 
+tr td p {
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  padding: 5px; 
+}
+
 .collection .collection-item {
     background-color: rgba(124, 124, 124, 0.616);
     line-height: 1.5rem;

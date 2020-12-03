@@ -19,10 +19,7 @@ class ControlTablaU{
         $_SESSION['editar']="ON";
         $modelo = new Usuario();
         $objeto = $modelo->BuscarUsuario($this->btn_edit);
-        $_SESSION['usuario'] = $objeto[0];
-
-
-        header("Location: ../view/gestionUsuario.php");
+        echo json_encode($objeto);
     }
 }
 $obj = new ControlTablaU();
