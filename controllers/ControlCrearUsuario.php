@@ -26,7 +26,6 @@ class ControlUsuario{
         echo json_encode($mensaje);
         return;
     } 
-    $mensaje = ["msg"=>"mensaje de ejemplo"];
     $model = new Usuario();
     $data = ["rut"=>$this->rut,"nombre"=>$this->nombre,"rol"=>"vendedor","clave"=>md5($this->clave),"estado"=>"1"];
     $count = $model->CrearUsuairo($data);

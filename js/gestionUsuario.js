@@ -3,12 +3,15 @@ new Vue ({
     data:{
         url:'http://127.0.0.1/OpticaProyect/',
         usuarios: [],
+        estados:[
+        { nombre: 'BLOQUEADO', value: '0' },
+        { nombre: 'HABILITADO', value: '1' },],
         formtype: "add",
         orut: "",
         vrut: "",
         vnombre:"",
         vclave:"",
-        vestado:"",
+        vestado:"1",
         rut:"",
         alerta:""
         
@@ -38,7 +41,6 @@ new Vue ({
             }
           },
         editar : async function (rut){
-
             const recurso = "controllers/ControlTablaU.php";
             var form = new FormData();
             form.append("bt_edit", rut);
@@ -50,9 +52,12 @@ new Vue ({
             const data = await res.json();
                 this.formtype = "edit";
                 x = data[0];
+                this.vclave = "";
+                this.orut = x.rut
                 this.vrut = x.rut;
                 this.vnombre = x.nombre;
                 this.vestado = x.estado;
+                this.alerta="";
                 console.log(data);
                 M.updateTextFields();
                 
@@ -63,9 +68,34 @@ new Vue ({
 
         },
         guardar : async function (){
-            this.formtype = "add";
-            this.vaciar();
-            M.updateTextFields();
+            
+            const recurso = "controllers/ControlEditarUsuario.php";
+            var form = new FormData();
+            form.append("rut",this.orut);
+            form.append("editarRut", this.vrut);
+            form.append("editarNombre", this.vnombre);
+            form.append("editarClave", this.vclave);
+            form.append("editarEstado", this.vestado);
+
+
+
+            try {
+                const res = await fetch(this.url + recurso, {
+                method: "post",
+                body: form,
+            });
+                const data = await res.json();
+                this.alerta=data.msg
+                console.log(data);
+                if (data.msg.includes("modificado") ){
+                    this.vaciar();
+                    this.cargaUsuarios();
+                    this.formtype = "add";
+                    M.updateTextFields();
+                };
+            } catch (error) {
+                    console.log(error);
+            }
         },
         crear : async function (){
             const recurso = "controllers/ControlCrearUsuario.php";
@@ -89,7 +119,6 @@ new Vue ({
                 };
             } catch (error) {
                 console.log(error);
-                this.alerta="";
             }
             
         },
@@ -97,7 +126,6 @@ new Vue ({
             this.vnombre="";
             this.vrut    ="";
             this.vestado ="";
-            this.orut   ="";
             this.vclave ="";
         },
     },
