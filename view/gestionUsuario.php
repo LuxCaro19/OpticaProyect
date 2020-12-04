@@ -93,7 +93,7 @@ $usuarios = $modelo->cargarUsuarios();
                                 </select>
                             </div>
                             <form action=# >
-                            <div class="input-field center-align">
+                            <div class="input-field center-align back-field-desactived">
                                 <button v-on:click="crear()" v-if="formtype === 'add'" class="btn-large">CREAR</button>
                                 <button v-on:click="guardar()" v-if="formtype === 'edit'"class="btn-large">GUARDAR</button>
                             </div>
@@ -127,7 +127,7 @@ $usuarios = $modelo->cargarUsuarios();
                                         <td :class = usuario.color>{{usuario.rut}}</td>
                                         <td :class = usuario.color>{{usuario.nombre}}</td>
                                         <td :class = usuario.color>{{usuario.estado}}</td>
-                                        <td><button  v-on:click="editar(usuario.rut)" class="btn-small btn-floating">✎</button></td>
+                                        <td><button  v-on:click="editar(usuario.rut)" class="btn-small btn-floating back-field-desactived">✎</button></td>
                                     </tr>
                             </table>
                     </div>

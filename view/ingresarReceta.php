@@ -33,8 +33,10 @@
     </nav>
 
     <ul id="slide-out" class="sidenav">
-        <li class="active"><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
-        <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
+        <li>
+            <a href="crearCliente.php">Crear Cliente</a></li>
+        <li class="active"><a href="ingresarReceta.php">Ingresar Receta</a></li>
+        <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
     </ul>
 
 
@@ -111,10 +113,10 @@
                             <ul class="collection">
                                 <ol>
                                     <li v-for="(datos, index) of cliente">
-                                    {{ index }}: {{ datos }}
+                                        {{ index }}: {{ datos }}
                                     </li>
                                 </ol>
-                                
+
                             </ul>
 
                         </div>
@@ -135,11 +137,12 @@
         </div>
 
 
-        <div class="card-panel" id="listaTipos">
+        <div class="card-panel letra-oscura color-letras-formulario selects-adaptados" id="listaTipos">
 
             <div class="row">
-                <div class="col l3 m6 s15 border">
+                <div class="col l3 m6 s12">
                     <p>tipo lente</p>
+
                     <label>
                         <input type="radio" id="lejos" value="lejos" v-model="tipo_lentes">
                         <span>lejos</span>
@@ -148,20 +151,17 @@
                         <input type="radio" id="cerca" value="cerca" v-model="tipo_lentes">
                         <span>cerca</span>
                     </label>
-                </div>
 
-
-                <div class="col l3 m6 s15 border">
 
                     <p>tipo cristal</p>
-                    
+
                     <select v-model="tipo_sel" class="browser-default">
                         <option v-for="option in tipos" v-bind:value="option.id_tipo_cristal">
                             {{ option.tipo_cristal }}
                         </option>
                     </select>
                     <span>Selected: {{ tipo_sel }}</span>
-                    
+
                     <p>material de cristal</p>
 
                     <select v-model="material_sel" class="browser-default">
@@ -175,9 +175,13 @@
 
 
 
+
                 </div>
 
-                <div class="col l3 m6 s15 border">
+
+
+                <div class="col l3 m6 s12 margen-arriba-77">
+
 
                     <p>base</p>
                     <select v-model="base_sel" class="browser-default">
@@ -200,67 +204,142 @@
 
                 </div>
 
-                <div class="col l3 m6 s15 center border">
+                <div class="col l3 m6 s12 margin-parrafo">
 
-                    <p>Ojo izquierdo</p>
-                        <p>esfera</p>
-                        <input type="text" v-model ="i_esfera">
-                        <p>cilindro</p>
-                        <input type="text" v-model ="i_cilindro">
-                        <p>eje</p>
-                        <input type="text" v-model ="i_eje">
+                    <p class="center">Ojo izquierdo</p>
+
+                    <div class="input-field margin-inputs back-field">
+
+                        <input type="text" v-model="i_esfera">
+                        <label for="esfera">Esfera</label>
+
+                    </div>
+
+                    <div class="input-field margin-inputs back-field">
+
+                        <input type="text" v-model="i_cilindro">
+                        <label for="esfera">Cilindro</label>
+
+                    </div>
+
+                    <div class="input-field margin-inputs back-field">
+
+                        <input type="text" v-model="i_eje">
+                        <label for="esfera">Eje</label>
+
+                    </div>
+
+
                 </div>
 
-                <div class="col l3 m6 s15 center border">
+                <div class="col l3 m6 s12 center margin-parrafo">
 
-                    <p>Ojo derecho</p>
-                        <p>esfera</p>
-                        <input type="text" v-model ="d_esfera">
-                        <p>cilindro</p>
-                        <input type="text" v-model ="d_cilindro">
-                        <p>eje</p>
-                        <input type="text" v-model ="d_eje">
+                    <p class="center">Ojo derecho</p>
+
+                    <div class="input-field margin-inputs back-field">
+
+                        <input type="text" v-model="d_esfera">
+                        <label for="esfera">Esfera</label>
+
+                    </div>
+
+                    <div class="input-field margin-inputs back-field">
+
+                        <input type="text" v-model="d_cilindro">
+                        <label for="esfera">Cilindro</label>
+
+                    </div>
+
+                    <div class="input-field margin-inputs back-field">
+
+                        <input type="text" v-model="d_eje">
+                        <label for="esfera">Eje</label>
+
+                    </div>
+
+
                 </div>
 
             </div>
 
             <hr>
 
-            <div class="row">
+            <div class="row margin-top-row">
 
-                <div class="col l4 m6 s12 center border">
-                    <p>Prisma</p>
-                    <input type="text" v-model ="prisma">
-                    <p>Distancia Pupilar</p>
-                    <input type="text" v-model ="distancia_p">
-                    <p>observacion</p>
-                    <div class="input-field col s12">
-                        <textarea v-model = "observacion" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Textarea</label>
+
+                <div class="col l4 m6 s12 center">
+
+                    <div class="input-field back-field">
+
+                        <input type="text" v-model="prisma">
+                        <label for="esfera">Prisma</label>
+
                     </div>
+
+
+                    <div class="input-field back-field">
+
+                        <input type="text" v-model="distancia_p">
+                        <label for="esfera">Distancia pupilar</label>
+
+                    </div>
+
+                    
+                    <div class="input-field col s12 back-field">
+                        <textarea v-model="observacion" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Observacion</label>
+                    </div>
+
+
                 </div>
-                <div class="col l4 m6 s12 center border">
 
-                    <p>Fecha entrega</p>
-                    <div class="input-field">
-                        <input type="text" class="datepicker" name="fecha" v-model = "fecha_e">
-                        <label for="fecha">Fecha</label>
+
+                <div class="col l4 m6 s12 center">
+
+                
+                    <div class="input-field back-field">
+                        <input type="text" class="datepicker" name="fecha" v-model="fecha_e">
+                        <label for="fecha">Fecha de entrega</label>
                     </div>
-                    <p>Valor Lente</p>
-                    <input type="text" v-model ="valor">
-                    <p>Distancia Pupilar</p>
-                    <input type="text" v-model ="rut_med">
-                    <p>Prisma</p>
-                    <input type="text" v-model ="nom_med">
+
+                    <div class="input-field back-field">
+
+                        <input type="text" v-model="valor">
+                        <label for="valor">Valor del lente</label>
+
+                    </div>
+
+                    
+                    <div class="input-field back-field">
+
+                        <input type="text" v-model="rut_med">
+                        <label for="valor">Rut del medico</label>
+
+                    </div>
+
+                    
+                    <div class="input-field back-field">
+
+                        <input type="text" v-model="nom_med">
+                        <label for="valor">Nombre del medico</label>
+
+                    </div>
+
+                    
                 </div>
 
-                <div class="col l4 m12 s12 center border">
-                    <p>Fecha Retiro</p>
-                    <div class="input-field">
-                        <input type="text" class="datepicker" name="fecha" v-model = "fecha_e">
-                        <label for="fecha">Fecha</label>
-                        <button v-on:click="crearReceta()" class="btn-large">Crear REceta</button>
+                <div class="col l4 m12 s12 center">
+                    
+                    <div class="input-field back-field">
+                        <input type="text" class="datepicker" name="fecha" v-model="fecha_e">
+                        <label for="fecha">Fecha de retiro</label>
                     </div>
+
+                    <div class="input-field back-field-desactived">
+                        <button v-on:click="crearReceta()" class="btn-large margin-top-button">Crear REceta</button>
+
+                    </div>
+                    
 
                 </div>
 
@@ -282,7 +361,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="../js/buscarOpciones.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="../js/buscarCliente.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
