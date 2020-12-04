@@ -1,237 +1,330 @@
-body{
-
-    background: url('../img/background.jpg');
-    background-size: cover;
-    font-family: 'Architects Daughter', cursive;
-
+body {
+  background: url("../img/background.jpg");
+  background-size: cover;
+  font-family: "Architects Daughter", cursive;
 }
 
 .input-field input:focus + label {
-    color: rgb(57, 209, 255) !important;
+  color: rgb(72 116 129) !important;
 }
-  /* label underline focus color */
+/* label underline focus color */
 .input-field input:focus {
-    border-bottom: 1px solid rgb(57, 209, 255) !important;
-    box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
+  border-bottom: 1px solid rgb(72 116 129) !important;
+  box-shadow: 0 1px 0 0 rgb(72 116 129) !important;
+}
+
+.input-field:hover {
+  background-color: rgba(206, 206, 206, 0.637);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+
+.input-field:hover label {
+  padding: 10px;
+}
+
+.back-field:hover {
+  background-color: rgba(160, 160, 160, 0.637);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.back-field:hover label{
+
+    padding: 10px;
+
+}
+
+.back-field-desactived:hover {
+    background-color: rgba(160, 160, 160, 0);
+    padding: 0px;
+    border-radius: 0px;
 }
 
 .letra-oscura input:focus + label {
-    color: rgb(76, 159, 187) !important;
+  color: rgb(48, 106, 126) !important;
 }
-  /* label underline focus color */
+/* label underline focus color */
 .letra-oscura input:focus {
-    border-bottom: 1px solid rgb(76, 159, 187) !important;
-    box-shadow: 0 1px 0 0 rgb(76, 159, 187) !important;
-    
-    
+  border-bottom: 1px solid rgb(48, 106, 126) !important;
+  box-shadow: 0 1px 0 0 rgb(48, 106, 126) !important;
 }
 
-.letra-oscura input{
-
-    font-size: 20px !important;
-    color:rgb(48, 106, 126);
-    border-bottom: 1px solid rgb(48, 106, 126) !important;
-
-    font-family: 'Architects Daughter', cursive;
-
+.sidenav li > a {
+  color: rgb(218 226 228);
 }
 
-.letra-oscura label{
-
-    font-size: 16px;
-    color: rgb(48, 106, 126);
-
+nav ul li.active {
+  background-color: rgb(0 157 189 / 64%);
 }
 
-.letra-oscura button:hover{
-
-    background: rgba(68, 176, 209, 0.904);
-
+.sidenav li.active {
+  background-color: rgb(0 157 189 / 64%);
 }
 
-.letra-oscura h6{
-
-    color:rgb(48, 106, 126);
-
+nav ul li:hover {
+  background-color: rgba(52, 179, 202, 0.493);
 }
 
-
-
-
-.login{  
-    
-    margin-top: 35px;
-
+.sidenav li:hover {
+  background-color: rgba(52, 179, 202, 0.493);
 }
 
+.letra-oscura input {
+  font-size: 20px !important;
+  color: rgb(48, 106, 126);
+  border-bottom: 1px solid rgb(48, 106, 126) !important;
 
- .login .card{
-
-    background: rgba(68, 68, 68, 0.664);
-    border-radius: 10px;
-
+  font-family: "Architects Daughter", cursive;
 }
 
-.login label{
-
-    font-size: 16px;
-    color: rgb(218, 218, 218);
-
+.input-field textarea:focus {
+  border-bottom: 1px solid rgb(57, 209, 255) !important;
+  box-shadow: 0 1px 0 0 rgb(57, 209, 255) !important;
 }
 
-.card-action{
-
-    border-radius: 10px;
+.letra-oscura textarea:focus + label {
+  color: rgb(76, 159, 187) !important;
+}
+/* label underline focus color */
+.letra-oscura textarea:focus {
+  border-bottom: 1px solid rgb(76, 159, 187) !important;
+  box-shadow: 0 1px 0 0 rgb(76, 159, 187) !important;
 }
 
-.login input{
+.letra-oscura textarea {
+  font-size: 20px !important;
+  color: rgb(48, 106, 126);
+  border-bottom: 1px solid rgb(48, 106, 126) !important;
 
-    font-size: 20px !important;
-    color:rgb(218, 218, 218);
-    font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
 }
 
-.login button:hover{
-
-    background: rgba(68, 176, 209, 0.904);
-
+.letra-oscura label {
+  font-size: 16px;
+  color: rgb(48, 106, 126);
 }
 
-.error .card{
-
-    background: rgba(199, 199, 199, 0.664);
-    border-radius: 10px;
-    margin-top: 70px;
-    padding: 30px;
-
+.letra-oscura button:hover {
+  background: rgba(68, 176, 209, 0.904);
 }
 
-
-
-.btn{
-
-    margin-top: 40px;
-    background-color: royalblue;
-    
-
+.letra-oscura h6 {
+  color: rgb(48, 106, 126);
 }
 
-
-
-
-.card-action img{
-
-    width: 250px;
-
+.login {
+  margin-top: 35px;
 }
 
-.card-content h4{
-
-    margin-bottom: 50px;
-    color: rgb(218, 218, 218);
-
+.login .card {
+  background: rgb(110 110 110 / 51%);
+  border-radius: 10px;
 }
 
-.card-content img{
-
-    width: 190px;
-
+.login label {
+  font-size: 16px;
+  color: rgb(235, 235, 235);
 }
 
-
-
-.card-errors{
-
-    display: grid;
-    grid-template-columns: 1fr;
-    background: rgba(17, 16, 16, 0.425);
-
-    align-items: center;
-    
-    border-radius: 10px;
-
+.card-action {
+  border-radius: 10px;
 }
 
-
-.btn-large{
-
-    margin-top: 30px;
-
-    border-radius: 6px;
-    background: rgba(73, 140, 161, 0.863);
-    
-
+.login input {
+  font-size: 20px !important;
+  color: rgb(235, 235, 235);
+  font-family: "Architects Daughter", cursive;
+  border-bottom: 1px solid rgb(235, 235, 235) !important;
 }
 
-.btn-floating{
-
-    background: rgba(73, 140, 161, 0.863);
-
+.login button:hover {
+  background: rgba(68, 176, 209, 0.904);
 }
 
-button{
-
-    font-family: 'Architects Daughter', cursive;
-
+.error .card {
+  background: rgba(199, 199, 199, 0.664);
+  border-radius: 10px;
+  margin-top: 70px;
+  padding: 30px;
 }
 
-.nav-wrapper img{
-
-    width: 110px;
-    margin-top: 8px;
-    margin-left: 140px;
-   
-    
+.grey.darken-1 {
+  background-color: #a8a7a7 !important;
 }
 
-.card-panel{
+.btn {
+  margin-top: 40px;
+  background-color: royalblue;
+}
 
-    border-radius: 10px;
-    background: rgba(182, 182, 182, 0.651);
+.card-action img {
+  width: 250px;
+}
+
+.card-content h4 {
+  margin-bottom: 50px;
+  color: rgb(235, 235, 235);
+}
+
+.card-content img {
+  width: 190px;
+}
+
+.card-errors {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: rgba(17, 16, 16, 0.425);
+
+  align-items: center;
+
+  border-radius: 10px;
+}
+
+.datepicker-table td.is-selected {
+    background-color: #009dbd;
+    color: #fff;
+}
+
+.datepicker-table td:hover {
+    background-color: #009dbd;
+    color: #fff;
+}
+
+.datepicker-cancel:hover, .datepicker-clear:hover, .datepicker-today:hover, .datepicker-done:hover {
+    background-color: #009dbd;
+    color: #fff;
+}
+
+.datepicker-date-display {
+
+    background-color: #5791a3;
 
 }
 
-.sidenav{
-
-    background: rgba(105, 105, 105, 0.836);
-    
-
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+    color: #009dbd;
 }
 
-.border{
 
-    border: 1px solid black;
+.btn-large {
+  margin-top: 30px;
 
+  border-radius: 6px;
+  background: rgba(73, 140, 161, 0.863);
 }
 
-.back{
+.btn-floating {
+  background: rgba(73, 140, 161, 0.863);
+}
 
+button {
+  font-family: "Architects Daughter", cursive;
+}
 
-    background: rgba(124, 124, 124, 0.616);
+.nav-wrapper img {
+  width: 110px;
+  margin-top: 8px;
+  margin-left: 140px;
+}
 
+.card-panel {
+  border-radius: 10px;
+  background: rgba(182, 182, 182, 0.651);
+}
+
+.sidenav {
+  background: rgba(105, 105, 105, 0.836);
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.back {
+  background: rgba(124, 124, 124, 0.616);
 }
 
 tr td p {
   margin-top: 0px;
-  margin-bottom: 0px; 
-  padding: 5px; 
+  margin-bottom: 0px;
+  padding: 5px;
 }
 
 .collection .collection-item {
-    background-color: rgba(124, 124, 124, 0.616);
-    line-height: 1.5rem;
-    padding: 10px 20px;
-    margin: 0;
-    border-bottom: 1px solid rgb(48, 106, 126);
-    color: rgb(48, 106, 126);
+  background-color: rgba(124, 124, 124, 0.616);
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid rgb(48, 106, 126);
+  color: rgb(48, 106, 126);
 }
 
 .collection {
-
-    border: 1px solid rgb(48, 106, 126);
-
+  border: 1px solid rgb(48, 106, 126);
 }
 
+/*  desactivarlos con 720p  */
 
+.margen-arriba-77 {
+  margin-top: 77px;
+}
 
+.margin-inputs {
+  margin-top: 20px;
+}
 
+.margin-parrafo p {
+  margin-bottom: 63px;
+  font-size: 18px;
+}
+
+.color-letras-formulario {
+  color: rgb(48, 106, 126);
+}
+
+.selects-adaptados select {
+  background-color: rgb(200 200 200 / 87%);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #447c94;
+  border-radius: 2px;
+  height: 3rem;
+  font-family: "Architects Daughter", cursive;
+  color: #447c94;
+}
+
+.selects-adaptados option {
+  font-family: "Architects Daughter", cursive;
+}
+
+.margin-top-row {
+  margin-top: 25px;
+}
+
+.margin-top-button {
+  margin-top: 152px;
+}
+
+@media screen and (max-width: 728px) {
+  .margen-arriba-77 {
+    margin-top: 0px;
+  }
+
+  .margin-inputs {
+    margin-top: 0px;
+  }
+
+  .margin-parrafo p {
+    margin-bottom: 0px;
+  }
+
+  .margin-top-row {
+    margin-top: 0px;
+  }
+
+  .margin-top-button {
+    margin-top: 60px;
+  }
+}

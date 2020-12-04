@@ -37,6 +37,7 @@
 
         <ul id="slide-out" class="sidenav">
             <li class="active"><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
+            <li><a href="ingresarReceta.php">Ingresar Receta</a></li>
             <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
         </ul>
 
