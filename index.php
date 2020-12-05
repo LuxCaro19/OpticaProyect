@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,12 @@
 
 
 </head>
+
 <body>
 
 
 
-</div>
-    
+
     <div class="container">
 
         <div class="row login">
@@ -41,61 +42,61 @@
 
 
                     <form action="controllers/ControlLogin.php" method="POST">
-                        
-                        
-                        
-                        
-
-                            <div class="card-content">
-
-                                <h4 class="center">Acceso Usuarios</h4>
-
-                                <div class="card-errors">
-
-                                    <?php
-                                        session_start(); 
-                                        if (isset($_SESSION['error'])){?>
-                                            
-                                            <h6 class = "center red-text text-darken" > <?php echo $_SESSION['error'];  ?></h6>
-
-                                            <?php unset($_SESSION['error']);
-                                        }
-
-                                    ?>
 
 
-                                </div>
-
-                                                
-
-                                <div class="input-field">
-
-                                    <input type="text" name="rutUsuario" id="nombre">
-                                    <label for="nombre">rut</label>
-                                    
-                                </div>
-
-                                <div class="input-field">
-
-                                    <input type="password" name="claveUsuario" id="clave">
-                                    <label for="clave">Contraseña</label>
 
 
-                                </div>
 
-                                <div class="input-field center-align back-field-desactived">
+                        <div class="card-content">
 
-                                    <button class="btn-large">Iniciar Sesión</button>
+                            <h4 class="center">Acceso Usuarios</h4>
 
-                                </div>
+                            <div class="card-errors">
 
-                                
+                                <?php
+                                session_start();
+                                if (isset($_SESSION['error'])) { ?>
+
+                                    <h6 class="center red-text text-darken"> <?php echo $_SESSION['error'];  ?></h6>
+
+                                <?php unset($_SESSION['error']);
+                                }
+
+                                ?>
 
 
                             </div>
-                        
-                            
-                        
+
+
+
+                            <div class="input-field">
+
+                                <input type="text" name="rutUsuario" id="nombre">
+                                <label for="nombre">rut</label>
+
+                            </div>
+
+                            <div class="input-field">
+
+                                <input type="password" name="claveUsuario" id="clave">
+                                <label for="clave">Contraseña</label>
+
+
+                            </div>
+
+                            <div class="input-field center-align back-field-desactived">
+
+                                <button class="btn-large">Iniciar Sesión</button>
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+
 
 
 
@@ -110,9 +111,10 @@
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
 
 
-    
+
+
 </body>
+
 </html>

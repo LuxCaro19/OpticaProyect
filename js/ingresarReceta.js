@@ -7,7 +7,7 @@ new Vue({
       armazones: [],
       cliente: [],
       rutCliente:"",
-      rutClienteSeleccionado,
+      rutClienteSeleccionado:"",
       tipo_lentes:'',
       i_esfera:'',
       i_cilindro:'',
