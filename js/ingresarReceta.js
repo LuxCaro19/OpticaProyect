@@ -7,6 +7,7 @@ new Vue({
       armazones: [],
       cliente: [],
       rutCliente:"",
+      rutClienteSeleccionado,
       tipo_lentes:'',
       i_esfera:'',
       i_cilindro:'',
@@ -26,7 +27,7 @@ new Vue({
       observacion:'',
       valor:'',
       distancia_p:'',
-      alerta:"",
+      alerta: [],
     },
     methods: {
       cargaMateriales: async function () {
@@ -86,7 +87,7 @@ new Vue({
         form.append("fecha_entrega", this.fecha_e);
         form.append("fecha_retiro", this.fecha_r);
         form.append("observacion", this.observacion);
-        form.append("rut_cliente", this.rutCliente);
+        form.append("rut_cliente", this.rutClienteSeleccionado);
         form.append("rut_medico", this.rut_med);
         form.append("nombre_medico", this.nom_med);
         try {
@@ -95,12 +96,16 @@ new Vue({
             body: form
         });
         const data = await res.json();
-            this.alerta=data.msg;
-            alert(this.alerta);
+          for (i in data) {
+            M.toast({html: data[i]})
+          }
+            
+            
+            this.alerta=data;
             
         } catch (error) {
             console.log(error);
-            alert("no no se pudo");
+            M.toast({html: 'hubo un error'})
         }
 
       },
@@ -116,6 +121,7 @@ new Vue({
         });
         const data = await res.json();
             this.cliente=data[0];
+            this.rutClienteSeleccionado=data[0]
         } catch (error) {
             this.cliente={}
         }
