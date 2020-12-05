@@ -47,7 +47,8 @@ new Vue ({
             try {
                 const res = await fetch(this.url + recurso, {
                 method: "post",
-                body: form
+                body: form,
+                
             });
             const data = await res.json();
                 this.formtype = "edit";
@@ -83,6 +84,7 @@ new Vue ({
                 const res = await fetch(this.url + recurso, {
                 method: "post",
                 body: form,
+                
             });
                 const data = await res.json();
                 this.alerta=data.msg
@@ -108,6 +110,7 @@ new Vue ({
                 const res = await fetch(this.url + recurso, {
                 method: "post",
                 body: form,
+            
             });
             const data = await res.json();
                 this.alerta=data.msg

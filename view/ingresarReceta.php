@@ -338,12 +338,13 @@
 
                     <div class="col l6 m6 s12 center">
 
-                        <div class="input-field back-field col l6 m12 s12">
 
+
+                        <div class="input-field back-field">
                             <input type="text" v-model="valor">
                             <label for="valor">Valor del lente</label>
-
                         </div>
+
 
 
                         <div class="input-field back-field-desactived right-align">

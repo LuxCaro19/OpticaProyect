@@ -265,6 +265,12 @@ tr td p {
   border: 1px solid rgb(48, 106, 126);
 }
 
+.collection ol li{
+
+  color: rgb(48, 106, 126);
+  font-size: 18px;
+}
+
 /*  desactivarlos con 720p  */
 
 .margen-arriba-77 {
@@ -306,6 +312,8 @@ tr td p {
 .margin-top-button {
   margin-top: 152px;
 }
+
+
 
 @media screen and (max-width: 728px) {
   .margen-arriba-77 {

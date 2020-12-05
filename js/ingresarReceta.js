@@ -32,7 +32,7 @@ new Vue({
     methods: {
       cargaMateriales: async function () {
         try {
-          var recurso = "controllers/buscarMaterialCristal.php";
+          var recurso = "controllers/BuscarMaterialCristal.php";
           const res = await fetch(this.url + recurso);
           const data = await res.json();
           console.log(data);
@@ -43,7 +43,7 @@ new Vue({
       },
       cargaTipos: async function () {
         try {
-          var recurso = "controllers/buscarTipoCristal.php";
+          var recurso = "controllers/BuscarTipoCristal.php";
           const res = await fetch(this.url + recurso);
           const data = await res.json();
           console.log(data);
@@ -54,7 +54,7 @@ new Vue({
       },
       cargaArmazones: async function () {
         try {
-          var recurso = "controllers/buscarTipoArmazon.php";
+          var recurso = "controllers/BuscarTipoArmazon.php";
           const res = await fetch(this.url + recurso);
           const data = await res.json();
           console.log(data);
@@ -93,7 +93,8 @@ new Vue({
         try {
             const res = await fetch(this.url + recurso, {
             method: "post",
-            body: form
+            body: form,
+          
         });
         const data = await res.json();
           for (i in data) {
