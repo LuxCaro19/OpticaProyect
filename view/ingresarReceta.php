@@ -345,20 +345,15 @@
                             <label for="valor">Valor del lente</label>
                         </div>
 
-
-
-                        <div class="input-field back-field-desactived right-align">
-                            <button v-on:click="crearReceta()" class="btn-large margin-top-button">Crear</button>
-
-                        </div>
-
-
-
                     </div>
 
+                    <div class="col l12 m12 s12 center">
 
+                        <div class="input-field back-field-desactived right-align">
+                            <button v-on:click="crearReceta()" class="btn-large">Crear</button>
+                        </div>
 
-
+                    </div>
 
 
                 </div>
