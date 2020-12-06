@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital@1&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,6 +30,8 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="crearCliente.php">Crear Cliente</a></li>
+
+                    <li><a href="buscarReceta.php">Buscar Receta</a></li>
                     <li><a href="ingresarReceta.php">Ingresar Receta</a></li>
                     <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
 
@@ -37,6 +41,8 @@
 
         <ul id="slide-out" class="sidenav">
             <li class="active"><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
+
+            <li><a href="buscarReceta.php">Buscar Receta</a></li>
             <li><a href="ingresarReceta.php">Ingresar Receta</a></li>
             <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
         </ul>
@@ -128,7 +134,7 @@
 
                                 </div>
 
-                                <div class="input-field center-align">
+                                <div class="input-field center-align back-field-desactived">
 
                                     <button class="btn-large">Crear</button>
 

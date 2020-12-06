@@ -16,7 +16,7 @@ body {
 }
 
 .input-field:hover {
-  background-color: rgba(206, 206, 206, 0.637);
+  /*background-color: rgba(206, 206, 206, 0.637);*/
   padding: 5px;
   border-radius: 10px;
 }
@@ -27,7 +27,7 @@ body {
 }
 
 .back-field:hover {
-  background-color: rgba(160, 160, 160, 0.637);
+  /*background-color: rgba(160, 160, 160, 0.637);*/
   padding: 5px;
   border-radius: 10px;
 }
@@ -39,9 +39,15 @@ body {
 }
 
 .back-field-desactived:hover {
-    background-color: rgba(160, 160, 160, 0);
+    /*background-color: rgba(160, 160, 160, 0);*/
     padding: 0px;
     border-radius: 0px;
+}
+
+.back-field-desactived:hover label {
+
+  padding: 0px;
+
 }
 
 .letra-oscura input:focus + label {
@@ -273,6 +279,43 @@ tr td p {
   font-size: 18px;
 }
 
+.margin-top-container{
+
+
+  margin-top: 80px;
+  margin-left: 30px;
+  margin-right: 70px;
+  margin-bottom: 60px;
+  
+
+}
+
+.icon-img{
+
+  width: 28px;
+}
+
+.icon-img:hover{
+
+
+  width: 30px;
+
+}
+
+.button-icon{
+
+  background: rgba(252, 252, 252, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
+
+}
+
+
+.btn-small{
+
+  background-color: #5b95a7;
+
+}
+
 /*  desactivarlos con 720p  */
 
 .margen-arriba-77 {
@@ -314,6 +357,46 @@ tr td p {
 .margin-top-button {
   margin-top: 152px;
 }
+
+.font-JetBrains{
+  font-family: 'JetBrains Mono', monospace;
+  
+}
+
+.font-JetBrains h6{
+  color: black;
+}
+
+.foot-information{
+
+
+  margin-top: 50px;
+  
+  
+
+}
+
+.foot-information p{
+
+  margin: 2px;
+
+
+}
+
+.foot-information img{
+
+
+  width: 120px;
+
+}
+
+.margin-informe{
+
+  margin-bottom: 80px;
+
+}
+
+
 
 
 

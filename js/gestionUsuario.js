@@ -1,7 +1,7 @@
 new Vue ({
     el:'#gestionusuario',
     data:{
-        url:'http://127.0.0.1/OpticaProyect/',
+        url:'http://localhost/opticaProyect/',
         usuarios: [],
         estados:[
         { nombre: 'BLOQUEADO', value: '0' },
