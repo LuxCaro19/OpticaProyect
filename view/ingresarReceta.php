@@ -14,7 +14,6 @@
 
 <body>
 
-
     <nav>
 
         <div class="nav-wrapper grey darken-1">
@@ -25,6 +24,7 @@
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="crearCliente.php">Crear Cliente</a></li>
+                <li><a href="buscarReceta.php">Buscar Receta</a></li>
                 <li class="active"><a href="ingresarReceta.php">Ingresar Receta</a></li>
                 <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
 
@@ -33,10 +33,10 @@
     </nav>
 
     <ul id="slide-out" class="sidenav">
-        <li>
-            <a href="crearCliente.php">Crear Cliente</a></li>
+        <li><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
+        <li><a href="buscarReceta.php">Buscar Receta</a></li>
         <li class="active"><a href="ingresarReceta.php">Ingresar Receta</a></li>
-        <li><a href="cerrarSesion.php">Cerrar Sesión</a></li>
+        <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
     </ul>
 
 
@@ -402,8 +402,10 @@
             var instances = M.Sidenav.init(elems);
             var instances = M.FormSelect.init(elems);
         });
-    </script>
-    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
     </script>
 
 

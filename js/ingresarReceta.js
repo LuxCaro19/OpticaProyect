@@ -1,7 +1,7 @@
 new Vue({
     el: "#formularioreceta",
     data: {
-      url:'http://127.0.0.1/OpticaProyect/',
+      url:'http://localhost/opticaProyect/',
       materiales: [],
       tipos: [],
       armazones: [],
