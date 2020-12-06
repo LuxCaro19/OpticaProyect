@@ -20,14 +20,22 @@ class BusquedaMaterial
     public function buscar()
     {
 
+        session_start();
+        if (isset($_SESSION['user'])) {
 
-        $model = new Receta();
-        $arr = $model->getAllMaterialCristal();
-        if (count($arr)) {
-            echo json_encode($arr);
+            $model = new Receta();
+            $arr = $model->getAllMaterialCristal();
+            if (count($arr)) {
+                echo json_encode($arr);
+            } else {
+                $mensaje = ["msg" => "error"];
+                echo json_encode($mensaje);
+            }
         } else {
-            $mensaje = ["msg" => "error"];
+
+            $mensaje = ["msg" => "no tienes permiso para estar aquí"];
             echo json_encode($mensaje);
+
         }
     }
 }
