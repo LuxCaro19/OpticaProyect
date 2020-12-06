@@ -49,8 +49,23 @@ $usuarios = $modelo->cargarUsuarios();
 
         <!--nav movil-->
         <ul id="slide-out" class="sidenav">
-            <li class="active"><a href="gestionUsuario.php" class="white-text">Gestion de usuarios</a></li>
-            <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/back_lentes.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/user_icon.png"></a>
+
+
+
+                    <a href="#name"><span class="black-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+                    <a href="#email"><span class="black-text email"><?= $_SESSION['user']['rut'] ?></span></a>
+
+
+                </div>
+            </li>
+            <li class="active"><a href="gestionUsuario.php"><i class="material-icons white-text">create</i>Gestion de usuarios</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>
         <!--fin nav-->
 
@@ -61,42 +76,42 @@ $usuarios = $modelo->cargarUsuarios();
                     <div class="card">
 
 
-                        <div class="card-content">             
+                        <div class="card-content">
                             <h4 v-if="formtype === 'add'" class="center">Crear Usuario</h4>
                             <h4 v-if="formtype === 'edit'" class="center">Editar Usuario</h4>
-                            <p>{{alerta}}</p> 
+                            <p>{{alerta}}</p>
 
                             <div class="input-field"><input type="hidden" :value="orut">
                             </div>
 
                             <div class="input-field ">
-                                <input type="text"  v-model="vrut">
+                                <input type="text" v-model="vrut">
                                 <label for="rut">Rut</label>
                             </div>
-                            
+
 
                             <div class="input-field">
-                                <input type="text"  v-model="vnombre">
+                                <input type="text" v-model="vnombre">
                                 <label for="nombre">Nombre</label>
                             </div>
 
                             <div class="input-field">
-                                <input type="password" v-model="vclave" >
+                                <input type="password" v-model="vclave">
                                 <label for="clave">Contraseña</label>
                             </div>
 
-                            <div v-if="formtype === 'edit'" class="input-field" >
-                                <select v-model="vestado"  class="browser-default">
+                            <div v-if="formtype === 'edit'" class="input-field">
+                                <select v-model="vestado" class="browser-default">
                                     <option value="" disabled>Bloqueo de cuenta</option>
                                     <option value="1">HABILITADO</option>
                                     <option value="0">BLOQUEADO</option>
                                 </select>
                             </div>
-                            <form action=# >
-                            <div class="input-field center-align back-field-desactived">
-                                <button v-on:click="crear()" v-if="formtype === 'add'" class="btn-large">CREAR</button>
-                                <button v-on:click="guardar()" v-if="formtype === 'edit'"class="btn-large">GUARDAR</button>
-                            </div>
+                            <form action=#>
+                                <div class="input-field center-align back-field-desactived">
+                                    <button v-on:click="crear()" v-if="formtype === 'add'" class="btn-large">CREAR</button>
+                                    <button v-on:click="guardar()" v-if="formtype === 'edit'" class="btn-large">GUARDAR</button>
+                                </div>
                             </form>
                         </div>
 
@@ -112,24 +127,24 @@ $usuarios = $modelo->cargarUsuarios();
                     <!-------------- Tabla de usuarios ---------------->
 
                     <div class="card-panel">
-                            <table class="striped centered">
+                        <table class="striped centered">
 
-                                <thead>
-                                    <tr>
-                                        <th>RUT</th>
-                                        <th>NOMBRE</th>
-                                        <th>ESTADO</th>
-                                        <th>ACCIONES</th>
-                                    </tr>
-                                </thead>
-                                            
-                                    <tr v-for="usuario in usuarios">
-                                        <td :class = usuario.color>{{usuario.rut}}</td>
-                                        <td :class = usuario.color>{{usuario.nombre}}</td>
-                                        <td :class = usuario.color>{{usuario.estado}}</td>
-                                        <td><button  v-on:click="editar(usuario.rut)" class="btn-small btn-floating back-field-desactived">✎</button></td>
-                                    </tr>
-                            </table>
+                            <thead>
+                                <tr>
+                                    <th>RUT</th>
+                                    <th>NOMBRE</th>
+                                    <th>ESTADO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+
+                            <tr v-for="usuario in usuarios">
+                                <td :class=usuario.color>{{usuario.rut}}</td>
+                                <td :class=usuario.color>{{usuario.nombre}}</td>
+                                <td :class=usuario.color>{{usuario.estado}}</td>
+                                <td><button v-on:click="editar(usuario.rut)" class="btn-small btn-floating back-field-desactived">✎</button></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -172,7 +187,7 @@ $usuarios = $modelo->cargarUsuarios();
 
 
     <?php } ?>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../js/gestionUsuario.js"></script>

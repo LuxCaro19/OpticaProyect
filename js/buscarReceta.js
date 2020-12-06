@@ -4,7 +4,7 @@ new Vue({
 
     data:{
 
-        url:'http://localhost/opticaProyect/',
+        url:'https://optica1500project.herokuapp.com/',
         rut:'',
         recetas:[],
         receta:{}
@@ -28,7 +28,7 @@ new Vue({
 
                 const data = await resp.json();
                 this.recetas=data;
-                
+
                 
 
             }catch(error){

@@ -3,7 +3,7 @@
 namespace controllers;
 
 
-use models\Receta;
+use models\Receta as Receta;
 
 require_once("../models/Receta.php");
 

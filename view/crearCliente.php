@@ -40,11 +40,26 @@
         </nav>
 
         <ul id="slide-out" class="sidenav">
-            <li class="active"><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/back_lentes.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/user_icon.png"></a>
 
-            <li><a href="buscarReceta.php">Buscar Receta</a></li>
-            <li><a href="ingresarReceta.php">Ingresar Receta</a></li>
-            <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
+
+
+                    <a href="#name"><span class="black-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+                    <a href="#email"><span class="black-text email"><?= $_SESSION['user']['rut'] ?></span></a>
+
+
+                </div>
+            </li>
+            
+            <li class="active"><a href="crearCliente.php" class="white-text"><i class="material-icons white-text">create</i>Crear Cliente</a></li>
+            <li><a href="buscarReceta.php"><i class="material-icons white-text">search</i>Buscar Receta</a></li>
+            <li><a href="ingresarReceta.php"><i class="material-icons white-text">save</i>Ingresar Receta</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>
 
 
