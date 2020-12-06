@@ -19,7 +19,7 @@ class ControlEditarUsuario{
 
     public function __construct()
     {
-        $this->original = $_POST['originalRut'];
+        $this->original = $_POST['rut'];
         $this->rut      = $_POST['editarRut'];
         $this->nombre   = $_POST['editarNombre'];
         $this->clave    = $_POST['editarClave'];
@@ -29,32 +29,36 @@ class ControlEditarUsuario{
 
     //edita las tablas de un usuario, segun la maqueta el rut tambien se puede modificar por eso quedo una copia del original llamado "original"
     public function actualizarUsuario(){
+        
         session_start();
-        if ($this->rut == "" || $this->nombre == "" || $this->clave == "") {
-            $_SESSION['respuesta'] = "campos vacios";
-            header("Location: ../view/gestionUsuario.php");
+        if ($this->rut == "" || $this->nombre == "") {
+            $mensaje = ["msg"=>"complete los campos vacios"];
+            echo json_encode($mensaje);
             return;
         }
 
         $model = new Usuario();
-        $dataedit = ["rut"=>$this->rut,"nombre"=>$this->nombre,"clave"=>$this->clave,"estado"=>$this->estado];
         $id = $this->original;
-        
-        //no modificar si el rut ya existe
-        $ishere = $model->BuscarUsuario($this->rut);
-        $count = $model->editarUsuario($id,$dataedit);
-        if ($count == 1) {
-            $_SESSION['respuesta'] = "usuario modificado";
+
+        //COMPRUEBA SI LA CLAVE SE HA INGRESADO, SI NO SE HA ECHO recupera la original
+        if ($this->clave == ""){
+            $arr = $model->BuscarUsuario($id);
+            $a = $arr[0];
+            $this->clave = $a["clave"];
         } else {
-            if (count($ishere)== 1) {
-                $_SESSION['respuesta'] = "rut ya existe";
-            } else {
-                $_SESSION['respuesta'] = "error database";
-            }
+            $this->clave = md5($this->clave);
         }
+        $dataedit = ["rut"=>$this->rut,"nombre"=>$this->nombre,"clave"=>$this->clave,"estado"=>$this->estado];
 
+        $count = $model->editarUsuario($id,$dataedit);
 
-        header("Location: ../view/gestionUsuario.php");
+        if ($count == 1) {
+            $mensaje = ["msg"=>"usuario modificado"];
+            echo json_encode($mensaje); 
+        } else {
+            $mensaje = ["msg"=>"hubo un error"];
+            echo json_encode($mensaje);
+        }     
     }
 }
 

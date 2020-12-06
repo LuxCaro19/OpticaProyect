@@ -21,17 +21,11 @@ class Cliente{
 
     }
 
-    public function login($email, $clave){
-
-        $stm = Conexion::conector()->prepare("SELECT * FROM cliente WHERE email=:email AND clave=:clave ");
-        $stm->bindParam(":email",$email);
-        $stm->bindParam(":clave",$clave);
+    //busca un cliente por rut
+    public function BuscarCliente($rut_cliente){;
+        $stm = Conexion::conector()->prepare("SELECT * FROM cliente WHERE rut_cliente = :rut_cliente");
+        $stm->bindParam(":rut_cliente",$rut_cliente);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
-
-
     }
-
-
-
 }

@@ -2,7 +2,7 @@
 
 namespace controllers;
 
-use models\Usuario;
+use models\Usuario as Usuario;
 
 require_once("../models/Usuario.php");
 
