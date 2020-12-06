@@ -62,10 +62,12 @@ class ControlCrearReceta{
     }
 
  public function nuevaReceta(){
+    
     session_start();
-    if (1==1) {
-        $usr = "a";
-        $this->rut_usuario = $usr;
+    if (isset($_SESSION['user'])) {
+        $usr = $_SESSION['user'];
+        $x = $usr['rut'];
+        $this->rut_usuario = $x;
         $this->fecha_visita_medico = date("Y/m/d");
         $model = new Receta();
         $data =["tipolente"=>$this->tipo_lente,
@@ -182,11 +184,11 @@ class ControlCrearReceta{
                     $mensaje["msg10"] ="el valor maximo es de 999.999.999";
                 }               
             } else {
-                $mensaje["msg10"] ="el valor debe ser numerico";
+                $mensaje["msg10"] ="el precio debe ser numerico";
             }
 
             if (strlen($this->observacion) > 1000 ){
-                $mensaje["msg11"] ="observacion demaciado larga, maximo 1000 caracteres";
+                $mensaje["msg11"] ="observacion demasiado larga, maximo 1000 caracteres";
             }  
 
 
@@ -202,7 +204,7 @@ class ControlCrearReceta{
                 $mensaje = ["msg"=>"receta creada"];
                 echo json_encode($mensaje);
             } else {
-                $mensaje = ["msg"=>"hubo un error, pero que mal"];
+                $mensaje = ["msg"=>"no se ha podido generar la receta"];
                 echo json_encode($mensaje);
                 
                 
