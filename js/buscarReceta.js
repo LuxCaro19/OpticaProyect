@@ -4,8 +4,9 @@ new Vue({
 
     data:{
 
-        url:'https://optica1500project.herokuapp.com/',
+        url:'http://localhost/opticaProyect/',
         rut:'',
+        fecha:'',
         recetas:[],
         receta:{}
     },
@@ -37,6 +38,41 @@ new Vue({
                 console.log(error);
 
             }
+
+        },
+
+        buscarPorFecha: async function(){
+
+            this.fecha=M.Datepicker.getInstance(buscar_fecha);
+
+            var recurso = "controllers/ControlBuscarRecetaFecha.php";
+            var form = new FormData();
+            form.append("fecha",this.fecha);
+            
+
+            try{
+
+                const resp = await fetch(this.url + recurso, {
+
+                    method: "post",
+                    body: form,
+
+                });
+
+                const data = await resp.json();
+                this.recetas=data;
+
+                
+
+            }catch(error){
+
+
+                console.log(error);
+
+            }
+
+
+
 
         },
 
