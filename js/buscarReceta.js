@@ -27,9 +27,35 @@ new Vue({
 
                 });
 
-                const data = await resp.json();
-                this.recetas=data;
+                
 
+                if(this.rut==""){
+                    M.toast({html: 'Ingrese un rut'})
+
+                }else{
+
+                    const data = await resp.json();
+
+                    this.recetas=data;
+                    var cantidad=0;
+
+                    for(i in data){
+
+                        cantidad++;
+
+
+                    }
+
+                    
+                    if(data==0){
+
+                        
+                        M.toast({html: 'Busqueda finalizada sin resultados'})
+                    }else{
+
+                        M.toast({html: '¡Busqueda finalizada con exito! cantidad de recetas: '+cantidad})
+                    }
+                }
                 
 
             }catch(error){
@@ -59,11 +85,38 @@ new Vue({
 
                 });
 
-                const data = await resp.json();
-                this.recetas=data;
+                if(this.fecha==""){
+                    M.toast({html: 'Ingrese una fecha'})
 
-                
+                }else{
 
+                    const data = await resp.json();
+
+                    this.recetas=data;
+                    var cantidad=0;
+
+                    for(i in data){
+
+                        cantidad++;
+
+
+                    }
+
+                    
+                    if(data==0){
+
+                        
+                        M.toast({html: 'Busqueda finalizada sin resultados'})
+                    }else{
+
+                        M.toast({html: '¡Busqueda finalizada con exito! cantidad de recetas: '+cantidad})
+                    }
+
+                    
+
+                }
+
+            
             }catch(error){
 
 

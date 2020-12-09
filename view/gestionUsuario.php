@@ -74,7 +74,7 @@ $usuarios = $modelo->cargarUsuarios();
             <div class="row login">
                 <div class="col l4 m6 s12">
 
-                    <div class="card">
+                    <div class="card selects-adaptados">
 
 
                         <div class="card-content">

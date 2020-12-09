@@ -7,45 +7,39 @@ use models\Receta as Receta;
 require_once("../models/Receta.php");
 
 
-class ControlBuscarRecetaFecha{
+class ControlBuscarRecetaFecha
+{
 
     public $fecha;
 
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->fecha = $_POST['fecha'];
-        
     }
 
-    public function buscarRecetasPorFecha(){
+    public function buscarRecetasPorFecha()
+    {
 
         session_start();
-        if(isset($_SESSION['user'])){
-            
-            $modelo= new Receta();
-            $array= $modelo->recetasPorFechas($this->fecha);
+        if (isset($_SESSION['user'])) {
 
-            echo json_encode($array);
+            //if ($this->fecha == "") {
 
+                //$mensaje = ["msg" => "Ingresa una fecha"];
+                //echo json_encode($mensaje);
+            //} else {
 
-        }else{
+                $modelo = new Receta();
+                $array = $modelo->recetasPorFechas($this->fecha);
+                //$mensaje=["msg"=>"Busqueda finalizada"];
+                echo json_encode($array);
+            //}
+        } else {
 
-            echo json_encode(["msg"=>"No tienes permiso para estar aquí"]);
-
-
+            echo json_encode(["msg" => "No tienes permiso para estar aquí"]);
         }
-
-
-        
-
-
     }
-
-
-
-
-
-
 }
 
 $obj = new ControlBuscarRecetaFecha();

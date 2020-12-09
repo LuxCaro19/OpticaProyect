@@ -134,7 +134,7 @@
                                     <ul class="collection">
                                         <ol>
                                             <li v-for="(datos, index) of cliente">
-                                                {{ index }}: {{ datos }}
+                                                <p>{{ datos }}</p>
                                             </li>
                                         </ol>
 
