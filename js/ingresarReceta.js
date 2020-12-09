@@ -1,7 +1,7 @@
 new Vue({
     el: "#formularioreceta",
     data: {
-      url:'http://localhost/opticaProyect/',
+      url:'https://optica1500project.herokuapp.com/',
       materiales: [],
       tipos: [],
       armazones: [],

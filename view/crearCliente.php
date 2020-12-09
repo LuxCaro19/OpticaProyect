@@ -71,39 +71,16 @@
 
                     <div class="card">
 
-                        <div class="card-content">
+                        <div class="card-content" id="creacionDeClientes">
 
                             <h4 class="center">Crear Cliente</h4>
 
-                            <div class="card-errors">
 
-                                <p class="red-text center">
-                                    <?php
-                                    if (isset($_SESSION['error'])) {
-                                        echo $_SESSION['error'];
-                                        unset($_SESSION['error']);
-                                    }
-                                    ?>
-                                </p>
-
-                                <p class="green-text center">
-                                    <?php
-                                    if (isset($_SESSION['resp'])) {
-                                        echo $_SESSION['resp'];
-                                        unset($_SESSION['resp']);
-                                    }
-                                    ?>
-                                </p>
-
-
-
-                            </div>
-
-                            <form action="../controllers/ControlCliente.php" method="POST">
+                            <form @submit.prevent="crearCliente">
 
                                 <div class="input-field">
 
-                                    <input type="text" name="rut" id="rut">
+                                    <input type="text" name="rut_c" id="rut_c" v-model="rut">
                                     <label for="rut">Rut</label>
 
 
@@ -111,7 +88,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="nombre" id="nombre">
+                                    <input type="text" name="nombre_c" id="nombre_c" v-model="nombre">
                                     <label for="nombre">Nombre</label>
 
 
@@ -119,7 +96,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="direccion" id="direccion">
+                                    <input type="text" name="direccion_c" id="direccion_C" v-model="direccion">
                                     <label for="direccion">Dirección</label>
 
 
@@ -127,7 +104,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="telefono" id="telefono">
+                                    <input type="text" name="telefono_c" id="telefono_c" v-model="telefono">
                                     <label for="telefono">Teléfono</label>
 
 
@@ -135,7 +112,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" class="datepicker" name="fecha" id="fecha">
+                                    <input type="text" class="datepicker" name="fecha" id="fecha_client">
                                     <label for="fecha">Fecha</label>
 
 
@@ -143,7 +120,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="email" id="email">
+                                    <input type="text" name="email_c" id="email_C" v-model="email">
                                     <label for="email">Email</label>
 
 
@@ -229,7 +206,10 @@
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/crearClientes.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
