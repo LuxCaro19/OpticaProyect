@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Receta</title>
+    <link rel="icon" href="../img/icon_page.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,10 +41,25 @@
         </nav>
 
         <ul id="slide-out" class="sidenav">
-            <li><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
-            <li class="active"><a href="buscarReceta.php">Buscar Receta</a></li>
-            <li><a href="ingresarReceta.php">Ingresar Receta</a></li>
-            <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/back_lentes.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/user_icon.png"></a>
+
+
+
+                    <a href="#name"><span class="black-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+                    <a href="#email"><span class="black-text email"><?= $_SESSION['user']['rut'] ?></span></a>
+
+
+                </div>
+            </li>
+            <li><a href="crearCliente.php" class="white-text"><i class="material-icons white-text">create</i>Crear Cliente</a></li>
+            <li class="active"><a href="buscarReceta.php"><i class="material-icons white-text">search</i>Buscar Receta</a></li>
+            <li><a href="ingresarReceta.php"><i class="material-icons white-text">save</i>Ingresar Receta</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>
 
 
@@ -104,29 +120,31 @@
 
                         <div class="col l4 m5 s12">
 
+                            <form @submit.prevent="buscarPorFecha">
+                                <div class="col l8">
 
-                            <div class="col l8">
+                                    <div class="input-field back-field-desactived">
 
-                                <div class="input-field back-field-desactived">
-                                    <input type="text">
-                                    <label for="fecha">Fecha</label>
+                                        <input type="text" class="datepicker" name="fecha" id="buscar_fecha">
+                                        <label for="fecha">Fecha</label>
+
+
+                                    </div>
 
 
                                 </div>
 
+                                <div class="col l4">
 
-                            </div>
+                                    <div class="input-field back-field-desactived">
 
-                            <div class="col l4">
+                                        <button class="btn-small">Buscar</button>
 
-                                <div class="input-field back-field-desactived">
+                                    </div>
 
-                                    <button class="btn-small">Buscar</button>
 
                                 </div>
-
-
-                            </div>
+                            </form>
 
                         </div>
 
@@ -148,7 +166,7 @@
                                 <th>NOMBRE</th>
                                 <th>MATERIAL DE CRISTAL</th>
                                 <th>TIPO DE CRISTAL</th>
-                                <th>FECHA DE RETIRO</th>
+                                <th>FECHA DE ENTREGA</th>
                                 <th>VER DETALLES</th>
                                 <th>GENERAR PDF</th>
                             </tr>
@@ -159,7 +177,7 @@
                             <td>{{rec.nombre_cliente}}</td>
                             <td>{{rec.material_cristal}}</td>
                             <td>{{rec.tipo_cristal}}</td>
-                            <td>{{rec.fecha_retiro}}</td>
+                            <td>{{rec.fecha_entrega}}</td>
 
                             <td>
 
@@ -192,7 +210,7 @@
 
                                 <p>Nombre del cliente : {{receta.nombre_cliente}}</p>
                                 <p>Numero del cliente : {{receta.telefono_cliente}}</p>
-                                <p>Fecha de entrega   : {{receta.fecha_entrega}}</p>
+                                <p>Fecha de entrega : {{receta.fecha_entrega}}</p>
                                 <p>Nombre del vendedor: {{receta.nombre_vendedor}}</p>
 
 
@@ -304,7 +322,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                     </div>
                 </div>
 
@@ -324,7 +342,34 @@
     <?php } else { ?>
 
 
-        <h1>NO</h1>
+        <div class="container center">
+
+            <div class="row error">
+
+                <div class="col l6 m6 s12 offset-l3 offset-m3">
+
+                    <div class="card">
+
+                        <div class="card-content">
+
+                            <img src="../img/logoOptica.png" alt="">
+
+                            <h2 class="red-text">Te has equivocado de camino amigo</h2>
+                            <h4 class="black-text">no dispones de accesso para estar aquí</h4>
+                            <p>Debes iniciar sesión, vuelve al <a href="../index.php">home</a> e inicia sesión.</p>
+                            <p>Creadores de la pagina: <a href="../creadores.html">creadores</a></p>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
 
 
     <?php } ?>

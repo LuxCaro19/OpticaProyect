@@ -309,6 +309,18 @@ tr td p {
 
 }
 
+.background img{
+
+
+  width: 300px;
+  
+
+}
+
+.sidenav .user-view .name, .sidenav .user-view .email {
+  font-size: 20px;
+}
+
 
 .btn-small{
 

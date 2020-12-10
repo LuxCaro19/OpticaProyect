@@ -4,8 +4,9 @@ new Vue({
 
     data:{
 
-        url:'http://localhost/opticaProyect/',
+        url:'https://optica1500project.herokuapp.com/',
         rut:'',
+        fecha:'',
         recetas:[],
         receta:{}
     },
@@ -26,9 +27,35 @@ new Vue({
 
                 });
 
-                const data = await resp.json();
-                this.recetas=data;
                 
+
+                if(this.rut==""){
+                    M.toast({html: 'Ingrese un rut'})
+
+                }else{
+
+                    const data = await resp.json();
+
+                    this.recetas=data;
+                    var cantidad=0;
+
+                    for(i in data){
+
+                        cantidad++;
+
+
+                    }
+
+                    
+                    if(data==0){
+
+                        
+                        M.toast({html: 'Busqueda finalizada sin resultados'})
+                    }else{
+
+                        M.toast({html: '¡Busqueda finalizada con exito! cantidad de recetas: '+cantidad})
+                    }
+                }
                 
 
             }catch(error){
@@ -37,6 +64,68 @@ new Vue({
                 console.log(error);
 
             }
+
+        },
+
+        buscarPorFecha: async function(){
+
+            this.fecha=M.Datepicker.getInstance(buscar_fecha);
+
+            var recurso = "controllers/ControlBuscarRecetaFecha.php";
+            var form = new FormData();
+            form.append("fecha",this.fecha);
+            
+
+            try{
+
+                const resp = await fetch(this.url + recurso, {
+
+                    method: "post",
+                    body: form,
+
+                });
+
+                if(this.fecha==""){
+                    M.toast({html: 'Ingrese una fecha'})
+
+                }else{
+
+                    const data = await resp.json();
+
+                    this.recetas=data;
+                    var cantidad=0;
+
+                    for(i in data){
+
+                        cantidad++;
+
+
+                    }
+
+                    
+                    if(data==0){
+
+                        
+                        M.toast({html: 'Busqueda finalizada sin resultados'})
+                    }else{
+
+                        M.toast({html: '¡Busqueda finalizada con exito! cantidad de recetas: '+cantidad})
+                    }
+
+                    
+
+                }
+
+            
+            }catch(error){
+
+
+                console.log(error);
+
+            }
+
+
+
 
         },
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cliente</title>
+    <link rel="icon" href="../img/icon_page.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,11 +41,26 @@
         </nav>
 
         <ul id="slide-out" class="sidenav">
-            <li class="active"><a href="crearCliente.php" class="white-text">Crear Cliente</a></li>
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/back_lentes.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/user_icon.png"></a>
 
-            <li><a href="buscarReceta.php">Buscar Receta</a></li>
-            <li><a href="ingresarReceta.php">Ingresar Receta</a></li>
-            <li><a href="cerrarSesion.php" class="white-text">Cerrar Sesión</a></li>
+
+
+                    <a href="#name"><span class="black-text name"><?= $_SESSION['user']['nombre'] ?></span></a>
+                    <a href="#email"><span class="black-text email"><?= $_SESSION['user']['rut'] ?></span></a>
+
+
+                </div>
+            </li>
+            
+            <li class="active"><a href="crearCliente.php" class="white-text"><i class="material-icons white-text">create</i>Crear Cliente</a></li>
+            <li><a href="buscarReceta.php"><i class="material-icons white-text">search</i>Buscar Receta</a></li>
+            <li><a href="ingresarReceta.php"><i class="material-icons white-text">save</i>Ingresar Receta</a></li>
+            <li><a href="cerrarSesion.php"><i class="material-icons white-text">power_settings_new</i>Cerrar Sesión</a></li>
         </ul>
 
 
@@ -56,39 +72,16 @@
 
                     <div class="card">
 
-                        <div class="card-content">
+                        <div class="card-content" id="creacionDeClientes">
 
                             <h4 class="center">Crear Cliente</h4>
 
-                            <div class="card-errors">
 
-                                <p class="red-text center">
-                                    <?php
-                                    if (isset($_SESSION['error'])) {
-                                        echo $_SESSION['error'];
-                                        unset($_SESSION['error']);
-                                    }
-                                    ?>
-                                </p>
-
-                                <p class="green-text center">
-                                    <?php
-                                    if (isset($_SESSION['resp'])) {
-                                        echo $_SESSION['resp'];
-                                        unset($_SESSION['resp']);
-                                    }
-                                    ?>
-                                </p>
-
-
-
-                            </div>
-
-                            <form action="../controllers/ControlCliente.php" method="POST">
+                            <form @submit.prevent="crearCliente">
 
                                 <div class="input-field">
 
-                                    <input type="text" name="rut" id="rut">
+                                    <input type="text" name="rut_c" id="rut_c" v-model="rut">
                                     <label for="rut">Rut</label>
 
 
@@ -96,7 +89,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="nombre" id="nombre">
+                                    <input type="text" name="nombre_c" id="nombre_c" v-model="nombre">
                                     <label for="nombre">Nombre</label>
 
 
@@ -104,7 +97,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="direccion" id="direccion">
+                                    <input type="text" name="direccion_c" id="direccion_C" v-model="direccion">
                                     <label for="direccion">Dirección</label>
 
 
@@ -112,7 +105,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="telefono" id="telefono">
+                                    <input type="text" name="telefono_c" id="telefono_c" v-model="telefono">
                                     <label for="telefono">Teléfono</label>
 
 
@@ -120,7 +113,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" class="datepicker" name="fecha" id="fecha">
+                                    <input type="text" class="datepicker" name="fecha" id="fecha_client">
                                     <label for="fecha">Fecha</label>
 
 
@@ -128,7 +121,7 @@
 
                                 <div class="input-field">
 
-                                    <input type="text" name="email" id="email">
+                                    <input type="text" name="email_c" id="email_C" v-model="email">
                                     <label for="email">Email</label>
 
 
@@ -214,7 +207,10 @@
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/crearClientes.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

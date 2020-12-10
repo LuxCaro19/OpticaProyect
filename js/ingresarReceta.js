@@ -1,7 +1,7 @@
 new Vue({
     el: "#formularioreceta",
     data: {
-      url:'http://localhost/opticaProyect/',
+      url:'https://optica1500project.herokuapp.com/',
       materiales: [],
       tipos: [],
       armazones: [],
@@ -117,13 +117,26 @@ new Vue({
             method: "post",
             body: form
         });
+
         const data = await res.json();
-            this.cliente=data[0];
-            if (data[0].length > 0) {
+
+
+          for(i in data){
+
               
-            } else {
-              this.rutClienteSeleccionado = this.rutCliente;
-            }
+
+            M.toast({html: data[i]})
+
+
+          }
+
+
+          this.cliente=data[0];
+          if (data[0].length > 0) {
+              
+          } else {
+            this.rutClienteSeleccionado = this.rutCliente;
+          }
             
         } catch (error) {
             this.cliente={}
