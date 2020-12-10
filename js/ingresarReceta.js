@@ -6,6 +6,7 @@ new Vue({
       tipos: [],
       armazones: [],
       cliente: [],
+      clienteexiste: false,
       rutCliente:"",
       rutClienteSeleccionado:"",
       tipo_lentes:'',
@@ -118,28 +119,25 @@ new Vue({
             body: form
         });
 
-        const data = await res.json();
+            const data = await res.json();
+          
+        
+            M.toast({html: data["msg"]});
+            this.cliente=data;
 
-
-          for(i in data){
-
-              
-
-            M.toast({html: data[i]})
-
-
-          }
-
-
-          this.cliente=data[0];
-          if (data[0].length > 0) {
-              
-          } else {
-            this.rutClienteSeleccionado = this.rutCliente;
-          }
+            
+          
+            if (data["rut_cliente"] == null) {
+              this.rutClienteSeleccionado = "";
+              this.clienteexiste = false;
+            } else {
+              this.rutClienteSeleccionado = data["rut_cliente"];
+              this.rutClienteSeleccionado = this.rutCliente;
+              this.clienteexiste =  true;
+            }
             
         } catch (error) {
-            this.cliente={}
+            this.cliente=[]
             this.rutClienteSeleccionado="";
         }
 

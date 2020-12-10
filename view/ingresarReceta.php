@@ -74,7 +74,7 @@
 
                     <div class="row">
 
-                        <div class="col l4 m6 s12">
+                        <div class="col l4 m6 s12 offset-m3">
 
                             <form @submit.prevent="buscar">
 
@@ -96,7 +96,7 @@
 
                                         <div class="input-field center-align back-field-desactived">
 
-                                            <button class="btn-large">Buscar Cliente</button>
+                                            <button class="btn-large">Buscar</button>
                                         </div>
 
 
@@ -120,28 +120,28 @@
 
 
 
-                        <div class="col l8 m8 s12 center">
+                        <div class="col l8 m12 s12 center">
 
-                            <div class="card">
+                            <div class="card" v-if="clienteexiste">
 
 
                                 <div class="card-content back">
 
-                                    <h6 class="center">Datos del cliente</h6>
-
-
-
-                                    <ul class="collection">
-                                        <ol>
-                                            <li v-for="(datos, index) of cliente">
-                                                <p>{{ datos }}</p>
-                                            </li>
-                                        </ol>
-
-                                    </ul>
-
+                                <div class="row">
+                                    <div class="col s12">
+                                        <p class="center">Datos del cliente</p>
+                                        <h6 class="center">{{cliente.nombre_cliente}}</h6>          
+                                        <h4 class="center unpocodemarginbot">{{cliente.rut_cliente}}</h4>
+                                    </div>
+                                    <div class="col s6">
+                                        <p>fono : {{cliente.telefono_cliente}} </p>
+                                        <p>correo : {{cliente.email_cliente}} </p>
+                                    </div>
+                                    <div class="col s6">
+                                        <p>direccion : {{cliente.direccion_cliente}}</p>
+                                        <p>registrado en : {{cliente.fecha_creacion}}</p>
+                                    </div>
                                 </div>
-
 
 
                             </div>
