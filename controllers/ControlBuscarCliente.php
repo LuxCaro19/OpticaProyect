@@ -30,6 +30,8 @@ class BusquedaCliente{
         $model = new Cliente();
         $arr = $model-> BuscarCliente($this->rut);
         if (count($arr)) {
+            //$mensaje=["msg"=>"Busqueda finalizada exitosamente"];
+            //echo json_encode($mensaje);
             echo json_encode($arr); 
         } else {
             $mensaje = ["msg"=>"Cliente no existe"];

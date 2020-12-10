@@ -36,7 +36,7 @@ class ControlBuscarRecetaRut{
 
         }else{
 
-            echo json_encode(["msg"=>"false"]);
+            echo json_encode(["msg"=>"No tienes nada que hacer aqui"]);
 
 
         }

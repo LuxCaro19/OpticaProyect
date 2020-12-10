@@ -116,11 +116,11 @@ class Receta
                 on cl.rut_cliente = receta.rut_cliente
             inner join usuario us
                 on us.rut = receta.rut_usuario
-            where receta.rut_cliente = :A
+            where receta.fecha_entrega = :A
         ';
 
         $stm = Conexion::conector()->prepare($sql);
-        $stm->bindParam(":A", $rut);
+        $stm->bindParam(":A", $fecha);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }

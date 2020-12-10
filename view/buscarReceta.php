@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Receta</title>
+    <link rel="icon" href="../img/icon_page.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -119,29 +120,31 @@
 
                         <div class="col l4 m5 s12">
 
+                            <form @submit.prevent="buscarPorFecha">
+                                <div class="col l8">
 
-                            <div class="col l8">
+                                    <div class="input-field back-field-desactived">
 
-                                <div class="input-field back-field-desactived">
-                                    <input type="text">
-                                    <label for="fecha">Fecha</label>
+                                        <input type="text" class="datepicker" name="fecha" id="buscar_fecha">
+                                        <label for="fecha">Fecha</label>
+
+
+                                    </div>
 
 
                                 </div>
 
+                                <div class="col l4">
 
-                            </div>
+                                    <div class="input-field back-field-desactived">
 
-                            <div class="col l4">
+                                        <button class="btn-small">Buscar</button>
 
-                                <div class="input-field back-field-desactived">
+                                    </div>
 
-                                    <button class="btn-small">Buscar</button>
 
                                 </div>
-
-
-                            </div>
+                            </form>
 
                         </div>
 
@@ -163,7 +166,7 @@
                                 <th>NOMBRE</th>
                                 <th>MATERIAL DE CRISTAL</th>
                                 <th>TIPO DE CRISTAL</th>
-                                <th>FECHA DE RETIRO</th>
+                                <th>FECHA DE ENTREGA</th>
                                 <th>VER DETALLES</th>
                                 <th>GENERAR PDF</th>
                             </tr>
@@ -174,7 +177,7 @@
                             <td>{{rec.nombre_cliente}}</td>
                             <td>{{rec.material_cristal}}</td>
                             <td>{{rec.tipo_cristal}}</td>
-                            <td>{{rec.fecha_retiro}}</td>
+                            <td>{{rec.fecha_entrega}}</td>
 
                             <td>
 
