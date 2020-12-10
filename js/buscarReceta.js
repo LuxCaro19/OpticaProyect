@@ -5,6 +5,7 @@ new Vue({
     data:{
 
         url:'https://optica1500project.herokuapp.com/',
+        receteexiste: false ,
         rut:'',
         fecha:'',
         recetas:[],
@@ -51,9 +52,11 @@ new Vue({
 
                         
                         M.toast({html: 'Busqueda finalizada sin resultados'})
+                        this.receteexiste = false;
                     }else{
 
                         M.toast({html: '¡Busqueda finalizada con exito! cantidad de recetas: '+cantidad})
+                        this.receteexiste = true;
                     }
                 }
                 
@@ -107,9 +110,11 @@ new Vue({
 
                         
                         M.toast({html: 'Busqueda finalizada sin resultados'})
+                        this.receteexiste = false;
                     }else{
 
                         M.toast({html: '¡Busqueda finalizada con exito! cantidad de recetas: '+cantidad})
+                        this.receteexiste = true;
                     }
 
                     

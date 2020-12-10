@@ -157,7 +157,7 @@
 
                 </div>
 
-                <div class="card-panel">
+                <div class="card-panel" v-if="receteexiste">
                     <table class="striped centered">
 
                         <thead>
