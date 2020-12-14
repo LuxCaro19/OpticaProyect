@@ -80,7 +80,7 @@ $usuarios = $modelo->cargarUsuarios();
                         <div class="card-content">
                             <h4 v-if="formtype === 'add'" class="center">Crear Usuario</h4>
                             <h4 v-if="formtype === 'edit'" class="center">Editar Usuario</h4>
-                            <p>{{alerta}}</p>
+
 
                             <div class="input-field"><input type="hidden" :value="orut">
                             </div>
