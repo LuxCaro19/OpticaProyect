@@ -98,6 +98,7 @@ new Vue ({
             } catch (error) {
                     console.log(error);
             }
+            M.toast({html: this.alerta})
         },
         crear : async function (){
             const recurso = "controllers/ControlCrearUsuario.php";
@@ -105,7 +106,6 @@ new Vue ({
             form.append("crearRut", this.vrut);
             form.append("crearNombre", this.vnombre);
             form.append("crearClave", this.vclave);
-            M.updateTextFields();
             try {
                 const res = await fetch(this.url + recurso, {
                 method: "post",
@@ -123,6 +123,8 @@ new Vue ({
             } catch (error) {
                 console.log(error);
             }
+            M.updateTextFields();
+            M.toast({html: this.alerta})
             
         },
         vaciar : async function (){
@@ -130,6 +132,7 @@ new Vue ({
             this.vrut    ="";
             this.vestado ="";
             this.vclave ="";
+            M.updateTextFields();
         },
     },
     created(){
