@@ -28,11 +28,14 @@ class BusquedaCliente{
         }
 
         $model = new Cliente();
-        $arr = $model-> BuscarCliente($this->rut);
-        if (count($arr)) {
-            //$mensaje=["msg"=>"Busqueda finalizada exitosamente"];
-            //echo json_encode($mensaje);
+        $arreglo = $model-> BuscarCliente($this->rut);
+        
+
+        if (count($arreglo)) {
+            $arr = $arreglo[0];
+            $arr["msg"] = "Usuario encontrado!";
             echo json_encode($arr); 
+
         } else {
             $mensaje = ["msg"=>"Cliente no existe"];
             echo json_encode($mensaje);

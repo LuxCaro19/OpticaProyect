@@ -1,11 +1,13 @@
 new Vue({
     el: "#formularioreceta",
     data: {
+      //url:'https://optica1500project.herokuapp.com/',
       url:'https://optica1500project.herokuapp.com/',
       materiales: [],
       tipos: [],
       armazones: [],
       cliente: [],
+      clienteexiste: false,
       rutCliente:"",
       rutClienteSeleccionado:"",
       tipo_lentes:'',
@@ -27,6 +29,8 @@ new Vue({
       observacion:'',
       valor:'',
       distancia_p:'',
+      fecha_en:'',
+      fecha_re:'',
     },
     methods: {
       cargaMateriales: async function () {
@@ -66,7 +70,6 @@ new Vue({
         if (this.rutClienteSeleccionado != ""){
           this.fecha_e = M.Datepicker.getInstance(fecha_entrega);
           this.fecha_r = M.Datepicker.getInstance(fecha_retiro);
-
           const recurso = "controllers/ControlCrearReceta.php";
           var form = new FormData();
           form.append("tipo_lente", this.tipo_lentes);
@@ -98,6 +101,25 @@ new Vue({
           const data = await res.json();
             for (i in data) {
               M.toast({html: data[i]})
+              if (data["msg"] == "receta creada") {
+                this.tipo_lentes = ""; 
+                this.i_esfera = "";
+                this.d_esfera = "";
+                this.i_cilindro = "";
+                this.d_cilindro = "";
+                this.i_eje = "";
+                this.d_eje = "";
+                this.prisma = "";
+                this.base_sel = "";
+                this.armazon_sel = ""; 
+                this.material_sel = "";
+                this.tipo_sel = "";
+                this.distancia_p = "";
+                this.valor = "";
+                this.observacion = "";
+                this.rut_med = "";
+                this.nom_med = "";
+              }
             }                       
           } catch (error) {
               console.log(error);
@@ -118,28 +140,25 @@ new Vue({
             body: form
         });
 
-        const data = await res.json();
+            const data = await res.json();
+          
+        
+            M.toast({html: data["msg"]});
+            this.cliente=data;
 
-
-          for(i in data){
-
-              
-
-            M.toast({html: data[i]})
-
-
-          }
-
-
-          this.cliente=data[0];
-          if (data[0].length > 0) {
-              
-          } else {
-            this.rutClienteSeleccionado = this.rutCliente;
-          }
+            
+          
+            if (data["rut_cliente"] == null) {
+              this.rutClienteSeleccionado = "";
+              this.clienteexiste = false;
+            } else {
+              this.rutClienteSeleccionado = data["rut_cliente"];
+              this.rutClienteSeleccionado = this.rutCliente;
+              this.clienteexiste =  true;
+            }
             
         } catch (error) {
-            this.cliente={}
+            this.cliente=[]
             this.rutClienteSeleccionado="";
         }
 

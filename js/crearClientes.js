@@ -42,6 +42,14 @@ new Vue({
                 const data = await resp.json();
                 for (i in data) {
                     M.toast({html: data[i]})
+                    if (data["msg"] == "Cliente creado exitosamente") {
+                        this.rut= ""; 
+                        this.nombre= ""; 
+                        this.direccion= ""; 
+                        this.telefono= ""; 
+                        this.fecha= ""; 
+                        this.email= ""; 
+                      }
                   }     
 
 

@@ -157,7 +157,7 @@
 
                 </div>
 
-                <div class="card-panel">
+                <div class="card-panel" v-if="receteexiste">
                     <table class="striped centered">
 
                         <thead>
@@ -186,7 +186,7 @@
                             </td>
                             <td>
 
-                                <button class="button-icon"><img src="../img/pdf_icon.png" alt="" class="icon-img"></button>
+                                <button class="button-icon" @click="generarPDF(rec.id)"><img src="../img/pdf_icon.png" alt="" class="icon-img"></button>
 
                             </td>
                         </tr>
@@ -291,7 +291,7 @@
 
                             <div class="col l4 m4 s12 offset-l8 offset-m4">
 
-                                <h6>Precio: {{receta.precio}}</h6>
+                                <h6>Precio: ${{receta.precio}}</h6>
 
                             </div>
 
