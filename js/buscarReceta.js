@@ -3,7 +3,7 @@ new Vue({
     el:'#buscarRut',
 
     data:{
-
+        //http://localhost/opticaProyect/
         url:'https://optica1500project.herokuapp.com/',
         receteexiste: false ,
         rut:'',
@@ -142,6 +142,13 @@ new Vue({
             var modal = document.getElementById('detalle_receta');
             var instance = M.Modal.getInstance(modal);
             instance.open();
+
+        },
+
+        generarPDF:function(id){
+
+            //alert(id);
+            window.open(this.url + "controllers/ExportarPDF.php?id=" + id, "_blank");
 
         }
 
